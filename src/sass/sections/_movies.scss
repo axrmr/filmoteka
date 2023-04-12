@@ -1,0 +1,63 @@
+.movies {
+  padding-top: 20px;
+  @include mq(tab) {
+    padding: 32px 0 60px;
+  }
+
+  &__trending {
+    padding-bottom: 40px;
+
+    @include mq(tab) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      padding-bottom: 60px;
+    }
+
+    @include mq(desk) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__item {
+    @include mq(mob-only) {
+      margin-bottom: 20px;
+    }
+  }
+  &__img {
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+
+  .movies-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    // min-height: 42px;
+    padding-left: 5px;
+    color: var(--accent);
+
+    &__title {
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      color: var(--dark);
+    }
+
+    // &__genre {
+    // }
+
+    &__year {
+      padding: 0 5px;
+      border-left: 1px solid var(--accent);
+      border-right: 1px solid var(--accent);
+    }
+
+    &__rating {
+      padding: 2px 8px;
+      color: var(--light);
+      background-color: var(--accent);
+      border-radius: 4px;
+    }
+  }
+}

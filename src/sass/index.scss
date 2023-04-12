@@ -1,2 +1,11 @@
-@import './common';
-@import './example';
+@import 'vars';
+@import 'mixins/media-queries';
+@import 'common';
+@import 'container';
+
+@import 'components/pagination';
+@import 'components/modal';
+
+@import 'sections/header';
+@import 'sections/movies';
+@import 'sections/footer';

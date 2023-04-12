@@ -1,0 +1,26 @@
+@mixin mq($dev) {
+  $mob: 320px;
+  $tab: 768px;
+  $desk: 1280px;
+
+  @if ($dev == mob-only) {
+    @media screen and (max-width: ($tab - 0.1px)) {
+      @content;
+    }
+  }
+  @if ($dev == mob) {
+    @media screen and (min-width: $mob) {
+      @content;
+    }
+  }
+  @if ($dev == tab) {
+    @media screen and (min-width: $tab) {
+      @content;
+    }
+  }
+  @if ($dev == desk) {
+    @media screen and (min-width: $desk) {
+      @content;
+    }
+  }
+}

@@ -3,12 +3,154 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
+    <script defer type="module" src="./index.js"></script>
+    <title>Filmoteka</title>
   </head>
   <body>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/example.html"></include>
+    <header class="header">
+      <div class="container">
+        <div class="header__top">
+          <nav class="nav">
+            <ul class="nav__list">
+              <li class="nav__item">
+                <a href="" class="nav__link nav__link--current"> Home </a>
+              </li>
+              <li class="nav__item">
+                <a href="" class="nav__link">My Library </a>
+              </li>
+            </ul>
+          </nav>
+          <form class="search-form" id="form" action="#">
+            <label class="search-form__label"
+              ><input class="search-form__input" type="text" name="searchQuery" placeholder="Search movie" />
+            </label>
+            <button class="search-form__btn" type="submit">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M6.41667 11.0833C8.994 11.0833 11.0833 8.994 11.0833 6.41667C11.0833 3.83934 8.994 1.75 6.41667 1.75C3.83934 1.75 1.75 3.83934 1.75 6.41667C1.75 8.994 3.83934 11.0833 6.41667 11.0833Z"
+                  stroke="black"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M12.2494 12.2499L9.71191 9.7124"
+                  stroke="black"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <div class="search-form__search-error" id="search-error">
+              Search result not successful. Enter the correct movie.
+            </div>
+          </form>
+        </div>
+        <a class="logo" href="index.html">
+          <svg
+            class="logo__icon"
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M26.4265 2.66675H5.57317C3.96786 2.66675 2.6665 3.96811 2.6665 5.57341V26.4267C2.6665 28.0321 3.96786 29.3334 5.57317 29.3334H26.4265C28.0318 29.3334 29.3332 28.0321 29.3332 26.4267V5.57341C29.3332 3.96811 28.0318 2.66675 26.4265 2.66675Z"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M9.3335 2.66675V29.3334"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M22.6665 2.66675V29.3334"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M2.6665 16H29.3332"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M2.6665 9.33325H9.33317"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M2.6665 22.6667H9.33317"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M22.6665 22.6667H29.3332"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M22.6665 9.33325H29.3332"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span class="logo__title">Filmoteka</span></a
+        >
+      </div>
+    </header>
+    <main>
+      <section class="movies">
+        <div class="container">
+          <div class="movies__trending" id="trending"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="copyright">
+          © 2020 | All Rights Reserved | Developed with
+          <span class="heart"></span> by GoIT Students
+        </div>
+      </div>
+    </footer>
+    <div class="backdrop is-visible" id="backdrop">
+      <div class="modal is-visible" id="modal">
+        <button class="modal__close-btn" id="close-modal">
+          <svg
+            class="close-icon"
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M8 8L22 22" stroke="black" stroke-width="2" />
+            <path d="M8 22L22 8" stroke="black" stroke-width="2" />
+          </svg>
+        </button>
+        <div class="modal__content" id="modal-content"></div>
+      </div>
+    </div>
   </body>
 </html>
