@@ -6,7 +6,7 @@ const showMovieDetailsModal = detailsArr => {
   return `<div class="modal__content-item" data-modal-content-item data-id="${detailsArr.id}" >
             <img class="modal__img" src="https://image.tmdb.org/t/p/w400/${detailsArr.poster_path}" alt="${detailsArr.original_title}" />
             <div class="modal-info">
-              <h3 class="modal-info__title">${detailsArr.original_title}</h3>
+              <h3 class="modal-info__title">${detailsArr.title}</h3>
               <ul class="modal-info__list">
                 <li class="modal-info__item">
                   <span class="modal-info__votes-title">Vote / Votes</span>
