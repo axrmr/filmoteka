@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 import GET_CONSTANTS from './scripts/ getConstants';
 import createMovieItemMarkup from './scripts/createMovieItemMarkup';
 import getDOMRefs from './scripts/getDOMRefs';
