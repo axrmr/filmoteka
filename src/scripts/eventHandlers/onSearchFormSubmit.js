@@ -27,6 +27,7 @@ function onSearchFormSubmit(e) {
       const movieItemsMarkup = createMovieItemMarkup(dataArr, genresArr);
 
       renderMovieMarkup(dom.trending, movieItemsMarkup);
+      document.getElementById('tui-pagination-container').style.display = 'none';
     })
     .catch(console.log);
 

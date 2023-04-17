@@ -29,7 +29,6 @@ dom.myLibrary.addEventListener('click', onMyLibraryClick);
 
 function onMyLibraryClick(e) {
   const watchedArr = $localStorage.get(WATCHED_STORAGE_KEY);
-  g;
 
   if (!watchedArr.length) return;
 
