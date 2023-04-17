@@ -14,10 +14,6 @@
   pointer-events: none;
   transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
 
-  @include mq(mob-only) {
-    width: calc(100% - 20px);
-  }
-
   &.visible {
     opacity: 1;
     visibility: visible;
@@ -27,7 +23,6 @@
   &__content {
     position: relative;
     max-width: 320px;
-    width: calc(100% - 40px);
     overflow: auto;
     padding: 40px 20px 40px;
     background-color: var(--light);
@@ -44,6 +39,7 @@
     }
 
     @include mq(mob-only) {
+      width: calc(100% - 40px);
       height: calc(100% - 40px);
     }
     @include mq(tab) {
