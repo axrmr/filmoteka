@@ -1,5 +1,5 @@
-const renderTrendingMarkup = (el, markup) => {
+const renderMovieMarkup = (el, markup) => {
   el.innerHTML = markup;
 };
 
-export default renderTrendingMarkup;
+export default renderMovieMarkup;

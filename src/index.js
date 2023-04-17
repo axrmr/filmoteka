@@ -1,80 +1,37 @@
 require('dotenv').config();
 
+import GET_CONSTANTS from './scripts/ getConstants';
 import createMovieItemMarkup from './scripts/createMovieItemMarkup';
-import fetchGenres from './scripts/fetchGenres';
-import fetchMovieDetails from './scripts/fetchMovieDetails';
-import fetchTrending from './scripts/fetchTrending';
+import getDOMRefs from './scripts/getDOMRefs';
 import $localStorage from './scripts/localStorage'; // save, get, remove - methods
 import renderMovieMarkup from './scripts/renderMovieMarkup';
-import searchMovies from './scripts/searchMovie';
-import showMovieDetailsModal from './scripts/showMovieDetailsModal';
-import showSearchError from './scripts/showSearchError';
 
-const GENRES_LOC_STORAGE_KEY = 'genres';
-const TRENDING_LOC_STORAGE_KEY = 'trending';
+// EventHandlers
+import handleModal from './scripts/eventHandlers/handleModal';
+import onDOMContentLoaded from './scripts/eventHandlers/onDOMContentLoaded';
+import onModalButtonsClick from './scripts/eventHandlers/onModalButtonsClick';
+import onSearchFormSubmit from './scripts/eventHandlers/onSearchFormSubmit';
+import onTrendingItemClick from './scripts/eventHandlers/onTrendingItemClick';
 
-const dom = {
-  trending: document.getElementById('trending'),
-  searchForm: document.getElementById('form'),
-  modalBackdrop: document.getElementById('backdrop'),
-  modal: document.getElementById('modal'),
-  modalContent: document.getElementById('modal-content'),
-  closeModalBtn: document.getElementById('close-modal'),
-};
+// Pagination
+import './scripts/pagination';
+
+const { WATCHED_STORAGE_KEY } = GET_CONSTANTS();
+const dom = getDOMRefs();
+
 document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
 dom.searchForm.addEventListener('submit', onSearchFormSubmit);
 dom.trending.addEventListener('click', onTrendingItemClick);
-dom.closeModalBtn.addEventListener('click', onCloseModalBtnClick);
-dom.modalBackdrop.addEventListener('click', onModalBackdropClick);
+dom.modal.addEventListener('click', handleModal.backdropClick);
+dom.closeModalBtn.addEventListener('click', handleModal.closeBtnClick);
+dom.modalButtonsWrap.addEventListener('click', onModalButtonsClick);
+dom.myLibrary.addEventListener('click', onMyLibraryClick);
 
-function onDOMContentLoaded() {
-  fetchGenres().then(genresArr => $localStorage.save(GENRES_LOC_STORAGE_KEY, genresArr));
+function onMyLibraryClick(e) {
+  const watchedArr = $localStorage.get(WATCHED_STORAGE_KEY);
+
+  if (!watchedArr.length) return;
+
+  document.getElementById('tui-pagination-container').style.display = 'none';
+  renderMovieMarkup(dom.trending, createMovieItemMarkup(watchedArr));
 }
-
-function onSearchFormSubmit(e) {
-  e.preventDefault();
-  const form = e.currentTarget;
-  const trimmedSearchQuery = form.searchQuery.value.trim();
-
-  searchMovies(trimmedSearchQuery).then(dataArr => {
-    if (!dataArr.length) {
-      showSearchError();
-      return;
-    }
-    const genresArr = $localStorage.get(GENRES_LOC_STORAGE_KEY);
-    const movieItemsMarkup = createMovieItemMarkup(dataArr, genresArr);
-
-    renderMovieMarkup(dom.trending, movieItemsMarkup);
-  });
-  e.currentTarget.reset();
-}
-
-function onTrendingItemClick(e) {
-  if (!e.target.closest('.movies__item')) {
-    return;
-  }
-  const movieId = e.target.closest('[data-id]').dataset.id;
-
-  fetchMovieDetails(movieId).then(data => {
-    const movieDetailsMarkup = showMovieDetailsModal(data);
-    dom.modalContent.innerHTML = movieDetailsMarkup;
-    dom.modalBackdrop.classList.remove('is-visible');
-    dom.modal.classList.remove('is-visible');
-  });
-}
-
-function onCloseModalBtnClick(e) {
-  dom.modalBackdrop.classList.add('is-visible');
-  dom.modal.classList.add('is-visible');
-}
-
-function onModalBackdropClick() {
-  this.classList.add('is-visible');
-}
-
-fetchTrending().then(trendingDataArr => {
-  const genresArr = $localStorage.get(GENRES_LOC_STORAGE_KEY);
-  const movieItemsMarkup = createMovieItemMarkup(trendingDataArr, genresArr);
-
-  renderMovieMarkup(dom.trending, movieItemsMarkup);
-});

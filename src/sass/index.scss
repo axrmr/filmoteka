@@ -1,3 +1,4 @@
+// @import '/node_modules/tui-pagination/dist/tui-pagination.css';
 @import 'vars';
 @import 'mixins/media-queries';
 @import 'common';
@@ -9,3 +10,5 @@
 @import 'sections/header';
 @import 'sections/movies';
 @import 'sections/footer';
+
+@import 'vendors/pagination';

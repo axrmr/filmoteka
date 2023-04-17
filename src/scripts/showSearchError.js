@@ -1,4 +1,4 @@
-const showSearchError = () => {
+const showSearchError = error => {
   document.getElementById('search-error').classList.add('visible');
 
   let id = setTimeout(() => {

@@ -172,11 +172,17 @@
       }
 
       @include mq(mob-only) {
-        margin-top: 5px;
+        margin-top: 8px;
       }
       @include mq(tab) {
-        margin-top: 20px;
+        margin-top: 10px;
       }
+    }
+  }
+
+  &__bottom {
+    @include mq(mob-only) {
+      margin-left: 20px;
     }
   }
 
@@ -184,10 +190,6 @@
     display: flex;
     align-items: center;
     gap: 10px;
-
-    @include mq(mob-only) {
-      margin-left: 15px;
-    }
 
     &__icon {
       width: 32px;
@@ -209,8 +211,6 @@
       font-weight: 700;
       line-height: 38px;
       line-height: calc(38px / 32px);
-      font-size: 40px;
-      line-height: 47px;
       color: var(--light);
 
       @include mq(tab) {
@@ -222,6 +222,43 @@
         font-size: 64px;
         line-height: calc(75px / 64px);
       }
+    }
+  }
+
+  .btns {
+    margin-top: 15px;
+
+    .btn__watched,
+    .btn__queue {
+      height: 34px;
+      padding: 0 24px;
+      text-transform: uppercase;
+      box-shadow: 0px 0px 7px rgba(27, 27, 27, 0.15);
+      border-radius: 100px;
+      border: 0;
+      cursor: pointer;
+      transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+
+      &:hover,
+      &:focus {
+        color: var(--light);
+        background-color: var(--accent);
+      }
+    }
+
+    .btn__watched {
+      color: var(--light);
+      background-color: var(--accent);
+
+      &:hover,
+      &:focus {
+        color: var(--accent);
+        background-color: var(--light);
+      }
+    }
+    .btn__queue {
+      color: var(--accent);
+      background-color: var(--light);
     }
   }
 }
