@@ -1,11 +1,13 @@
 import GET_CONSTANTS from '../ getConstants';
 import createMovieItemMarkup from '../createMovieItemMarkup';
+import getDOMRefs from '../getDOMRefs';
 import $localStorage from '../localStorage';
 import renderMovieMarkup from '../renderMovieMarkup';
 import searchMovies from '../searchMovie';
 import showSearchError from '../showSearchError';
 
 const { GENRES_STORAGE_KEY } = GET_CONSTANTS();
+const dom = getDOMRefs();
 
 function onSearchFormSubmit(e) {
   e.preventDefault();

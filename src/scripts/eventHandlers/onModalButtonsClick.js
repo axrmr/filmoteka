@@ -1,16 +1,14 @@
+import GET_CONSTANTS from '../ getConstants';
 import isNotIncludeMovie from '../isNotIncludeMovie';
 import $localStorage from '../localStorage';
 
-const CURRENT_PAGE_MOVIES_STORAGE_KEY = 'current-page-movies-data';
-const WATCHED_STORAGE_KEY = 'watched';
-const QUEUE_STORAGE_KEY = 'queue';
+const { CURRENT_PAGE_MOVIES_STORAGE_KEY, WATCHED_STORAGE_KEY, QUEUE_STORAGE_KEY } = GET_CONSTANTS();
 
 function onModalButtonsClick(e) {
+  const target = e.target;
   const movieToAddId = +document.querySelector('[data-modal-content-item]').dataset.id;
   const currPageMoviesData = $localStorage.get(CURRENT_PAGE_MOVIES_STORAGE_KEY);
   const movieToAddData = currPageMoviesData.find(movie => movie.id === +movieToAddId);
-
-  const target = e.target;
 
   addToWatchedOrQueue(target, movieToAddId, movieToAddData);
 }
