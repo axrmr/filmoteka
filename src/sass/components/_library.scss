@@ -1,0 +1,49 @@
+.library-btns {
+  display: none;
+  height: 34px;
+
+  &.visible {
+    display: block;
+  }
+
+  @include mq(tab) {
+    position: absolute;
+    top: -91%;
+    right: -20px;
+    height: 38px;
+  }
+  @include mq(desk) {
+    top: -64%;
+    right: -30px;
+    height: 42px;
+  }
+
+  .library-btn {
+    height: 100%;
+    padding: 1px 24px 0;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 0;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &--watched {
+      margin-right: 6px;
+      background-color: var(--light);
+
+      &:hover {
+        background-color: var(--light-hover);
+      }
+    }
+    &--queue {
+      color: var(--light);
+      background-color: var(--accent);
+
+      &:hover {
+        background-color: var(--accent-hover);
+      }
+    }
+  }
+}

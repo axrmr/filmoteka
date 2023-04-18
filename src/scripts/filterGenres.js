@@ -1,4 +1,4 @@
-import GET_CONSTANTS from './ getConstants';
+import GET_CONSTANTS from './ GET_CONSTANTS';
 import $localStorage from './localStorage'; // save, get, remove - methods
 
 const { GENRES_STORAGE_KEY } = GET_CONSTANTS();

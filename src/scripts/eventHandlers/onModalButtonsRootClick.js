@@ -1,10 +1,10 @@
-import GET_CONSTANTS from '../ getConstants';
+import GET_CONSTANTS from '../ GET_CONSTANTS';
 import isNotIncludeMovie from '../isNotIncludeMovie';
 import $localStorage from '../localStorage';
 
 const { CURRENT_PAGE_MOVIES_STORAGE_KEY, WATCHED_STORAGE_KEY, QUEUE_STORAGE_KEY } = GET_CONSTANTS();
 
-function onModalButtonsClick(e) {
+function onModalButtonsRootClick(e) {
   const target = e.target;
   const movieToAddId = +document.querySelector('[data-modal-content-item]').dataset.id;
   const currPageMoviesData = $localStorage.get(CURRENT_PAGE_MOVIES_STORAGE_KEY);
@@ -30,4 +30,4 @@ function addToWatchedOrQueue(targetBtn, movieToAddId, movieToAddData) {
   }
 }
 
-export default onModalButtonsClick;
+export default onModalButtonsRootClick;

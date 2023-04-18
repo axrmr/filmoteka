@@ -24,7 +24,7 @@
     position: relative;
     max-width: 320px;
     overflow: auto;
-    padding: 40px 20px 40px;
+    padding: 40px 20px 20px;
     background-color: var(--light);
     transform: scale(0.9);
     opacity: 0;
@@ -53,13 +53,20 @@
   &__close-btn {
     position: absolute;
     top: 5px;
-    right: 10px;
+    right: 14px;
     z-index: 2;
     width: 30px;
     height: 30px;
+    color: #8c8c8c;
     background-color: transparent;
     border: 0;
     cursor: pointer;
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+    &:hover {
+      color: var(--dark);
+      transform: scale(1.05);
+    }
 
     @include mq(tab) {
       right: 12px;
@@ -68,6 +75,9 @@
     .close-icon {
       width: 30px;
       height: 30px;
+      stroke: currentColor;
+      fill: currentColor;
+
       pointer-events: none;
     }
   }
@@ -206,8 +216,7 @@
 
     &:hover {
       color: var(--accent);
-      background-color: var(--footer-bg);
-      border: 1px solid gray;
+      background-color: var(--light-hover);
     }
 
     @include mq(tab) {

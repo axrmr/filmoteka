@@ -1,5 +1,5 @@
 import Pagination from 'tui-pagination';
-import GET_CONSTANTS from './ getConstants';
+import GET_CONSTANTS from './ GET_CONSTANTS';
 import createMovieItemMarkup from './createMovieItemMarkup';
 import fetchTrending from './fetchTrending';
 import getDOMRefs from './getDOMRefs';
