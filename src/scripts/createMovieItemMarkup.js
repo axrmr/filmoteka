@@ -4,7 +4,7 @@ const createMovieItemMarkup = dataArr => {
   return dataArr
     .map(movie => {
       const id = movie.id;
-      const poster = `https://image.tmdb.org/t/p/w400/${movie.poster_path}`;
+      const poster = `https://image.tmdb.org/t/p/w300/${movie.poster_path}`;
       const name = movie.title || movie.name;
       const genres = filterGenres(movie.genre_ids);
       const releaseDate = movie.release_date ? (movie.release_date || movie.first_air_date).slice(0, 4) : '';

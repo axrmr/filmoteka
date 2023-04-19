@@ -6,14 +6,17 @@
     display: block;
   }
 
+  @include mq(mob-only) {
+    margin-top: 10px;
+  }
   @include mq(tab) {
     position: absolute;
-    top: -91%;
+    top: -257%;
     right: -20px;
     height: 38px;
   }
   @include mq(desk) {
-    top: -64%;
+    top: -255%;
     right: -30px;
     height: 42px;
   }
@@ -28,6 +31,15 @@
     border-radius: 100px;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
+    &.current {
+      color: var(--light);
+      background-color: var(--dark);
+
+      &:hover {
+        color: var(--light);
+        background-color: var(--dark);
+      }
+    }
 
     &--watched {
       margin-right: 6px;

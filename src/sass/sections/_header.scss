@@ -9,6 +9,14 @@
   background-size: cover;
   background-color: var(--accent);
 
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 15px;
+  }
+
   @include mq(tab) {
     max-width: 704px;
     width: 100%;
@@ -20,6 +28,7 @@
     height: 316px;
     padding: 16px 32px 32px;
     background-image: url('../images/header/header-bg_desk.jpg');
+    padding-bottom: 0;
   }
 
   &__top {
@@ -77,6 +86,7 @@
         color: var(--light);
         background-color: var(--dark);
       }
+
       @include mq(tab) {
         min-width: 80px;
       }
@@ -175,7 +185,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 105%;
+      // margin-top: auto;
+
+      &.offset-top {
+        margin-top: 110%;
+      }
     }
     @include mq(tab) {
       position: relative;
@@ -186,7 +200,6 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 10px;
 
     &__icon {
       width: 32px;

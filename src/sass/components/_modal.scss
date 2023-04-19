@@ -182,7 +182,7 @@
   &__popularity-number,
   &__original-title-name,
   &__genre-name {
-    color: black;
+    color: var(--dark);
   }
 }
 
@@ -241,12 +241,12 @@
 
     @include mq(tab) {
       margin-right: 4px;
+      min-width: 140px;
     }
   }
 
   &--queue {
     color: var(--accent);
     background-color: transparent;
-    border: 1px solid gray;
   }
 }
