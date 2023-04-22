@@ -10,7 +10,7 @@ import onLibraryQueueClick from './scripts/eventHandlers/onLibraryQueueClick';
 import onLibraryWatchedClick from './scripts/eventHandlers/onLibraryWatchedClick';
 import onMyLibraryClick from './scripts/eventHandlers/onMyLibraryClick';
 import onSearchFormSubmit from './scripts/eventHandlers/onSearchFormSubmit';
-import onTrendingItemClick from './scripts/eventHandlers/onTrendingItemClick';
+import onMovieClick from './scripts/eventHandlers/onMovieClick';
 
 // Pagination
 import './scripts/pagination';
@@ -19,7 +19,7 @@ const dom = getDOMRefs();
 
 document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
 dom.searchForm.addEventListener('submit', onSearchFormSubmit);
-dom.trending.addEventListener('click', onTrendingItemClick);
+dom.trending.addEventListener('click', onMovieClick);
 dom.modal.addEventListener('click', handleModal.backdropClick);
 dom.closeModalBtn.addEventListener('click', handleModal.closeBtnClick);
 dom.libraryWatchedBtn.addEventListener('click', onLibraryWatchedClick);

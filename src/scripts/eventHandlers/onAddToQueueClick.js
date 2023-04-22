@@ -14,7 +14,7 @@ function onAddToQueueClick(e) {
   if (!target.hasAttribute('data-in-queue')) {
     saveSelectedMovieToStorage({ key: QUEUE_STORAGE_KEY, movieObj: movieToAddObj, movieId: movieToAddId });
     this.setAttribute('data-in-queue', '');
-    this.textContent = 'Remove queue';
+    this.textContent = 'Remove';
     return;
   }
   if (target.hasAttribute('data-in-queue')) {

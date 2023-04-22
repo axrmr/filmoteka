@@ -1,7 +1,8 @@
-const showMovieDetailsModal = detailsArr => {
+const createMovieDetailsMarkup = detailsArr => {
   const rating = detailsArr.vote_average.toString().slice(0, 3);
   const popularity = detailsArr.popularity.toFixed(1);
-  const genre = detailsArr.genres.map(genre => genre.name).join(', ');
+  // const genre = detailsArr.genres.map(genre => genre.name).join(', ');
+  // <span class="modal-info__genre-name">${genre} </span>
 
   return `<div class="modal__content-item" data-modal-content-item data-id="${detailsArr.id}" >
             <img class="modal__img" src="https://image.tmdb.org/t/p/w400/${detailsArr.poster_path}" alt="${detailsArr.original_title}" />
@@ -22,7 +23,6 @@ const showMovieDetailsModal = detailsArr => {
                 </li>
                 <li class="modal-info__item">
                   <span class="modal-info__genre-title">Genre </span>
-                  <span class="modal-info__genre-name">${genre} </span>
                 </li>
               </ul>
               <div class="modal-about">
@@ -33,4 +33,4 @@ const showMovieDetailsModal = detailsArr => {
     `;
 };
 
-export default showMovieDetailsModal;
+export default createMovieDetailsMarkup;

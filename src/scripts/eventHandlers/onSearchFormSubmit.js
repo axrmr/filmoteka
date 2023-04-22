@@ -31,7 +31,7 @@ function onSearchFormSubmit(e) {
     })
     .catch(console.log);
 
-  e.currentTarget.reset();
+  this.reset();
 }
 
 export default onSearchFormSubmit;

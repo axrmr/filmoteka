@@ -37,4 +37,5 @@ export default {
   backdropClick,
   closeBtnClick,
   escKeyDown,
+  modalTransitioned,
 };

@@ -13,9 +13,10 @@ function onHomeClick(e) {
   dom.myLibrary.classList.remove('nav__link--current');
   dom.home.classList.add('nav__link--current');
 
-  document.getElementById('tui-pagination-container').style.display = 'block';
   const homePageMovies = $localStorage.get(HOME_PAGE_MOVIES);
+
   renderMovieMarkup(dom.trending, createMovieItemMarkup(homePageMovies));
+  document.getElementById('tui-pagination-container').style.display = 'block';
 }
 
 export default onHomeClick;
