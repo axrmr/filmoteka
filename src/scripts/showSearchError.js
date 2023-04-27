@@ -1,8 +1,8 @@
 const showSearchError = error => {
-  document.getElementById('search-error').classList.add('visible');
+  document.querySelector('[data-search-error]').classList.add('visible');
 
   let id = setTimeout(() => {
-    document.getElementById('search-error').classList.remove('visible');
+    document.querySelector('[data-search-error]').classList.remove('visible');
 
     clearTimeout(id);
   }, 2500);

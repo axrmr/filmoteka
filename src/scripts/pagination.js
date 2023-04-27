@@ -24,5 +24,6 @@ pagination.on('beforeMove', function (eventData) {
     renderMovieMarkup(dom.trending, movieItemsMarkup);
   });
 });
+console.log(innerWidth);
 
 export default pagination;

@@ -1,0 +1,57 @@
+// Navigation
+.nav {
+  margin-bottom: 10px;
+
+  @include mq(tab) {
+    order: 2;
+  }
+
+  &__list {
+    text-transform: uppercase;
+    color: var(--dark);
+  }
+
+  &__item {
+    display: inline-block;
+    height: 34px;
+
+    @include mq(tab) {
+      height: 38px;
+    }
+    @include mq(desk) {
+      height: 42px;
+    }
+    &:not(:last-child) {
+      margin-right: 5px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 23px;
+    background-color: var(--light);
+    border-radius: 100px;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+
+    &:hover,
+    &:focus {
+      color: var(--light);
+      background-color: var(--dark);
+    }
+
+    &--current {
+      color: var(--light);
+      background-color: var(--dark);
+    }
+
+    @include mq(tab) {
+      min-width: 80px;
+    }
+    @include mq(desk) {
+      min-width: 100px;
+    }
+  }
+}

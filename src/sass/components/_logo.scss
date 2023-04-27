@@ -1,0 +1,34 @@
+// Logo
+.logo {
+  &__icon {
+    display: inline-block;
+    width: 32px;
+    height: 36px;
+    @include mq(tab) {
+      width: 40px;
+      height: 40px;
+    }
+    @include mq(desk) {
+      width: 60px;
+      height: 60px;
+      padding-top: 6px;
+    }
+  }
+
+  &__title {
+    vertical-align: top;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: calc(38px / 32px);
+    color: var(--light);
+
+    @include mq(tab) {
+      font-size: 40px;
+      line-height: calc(47px / 40px);
+    }
+    @include mq(desk) {
+      font-size: 64px;
+      line-height: calc(75px / 64px);
+    }
+  }
+}

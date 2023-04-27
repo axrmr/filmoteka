@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,7 +14,9 @@
     <div class="wrapper">
       <header class="header">
         <div class="container">
+          <!-- Header top -->
           <div class="header__top">
+            <!-- Navigation -->
             <nav class="nav">
               <ul class="nav__list">
                 <li class="nav__item">
@@ -25,108 +27,37 @@
                 </li>
               </ul>
             </nav>
+
+            <!-- Search form -->
             <form class="search-form" data-form action="#">
               <label class="search-form__label"
                 ><input class="search-form__input" type="text" name="searchQuery" placeholder="Search movie" />
               </label>
-              <button class="search-form__btn" type="submit">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.41667 11.0833C8.994 11.0833 11.0833 8.994 11.0833 6.41667C11.0833 3.83934 8.994 1.75 6.41667 1.75C3.83934 1.75 1.75 3.83934 1.75 6.41667C1.75 8.994 3.83934 11.0833 6.41667 11.0833Z"
-                    stroke="black"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M12.2494 12.2499L9.71191 9.7124"
-                    stroke="black"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
+              <button class="search-form__btn" type="submit" aria-label="Search button">
+                <svg class="search-form__icon">
+                  <use href="images/sprite.svg#search"></use>
                 </svg>
               </button>
-              <div class="search-form__search-error" id="search-error">
+              <div class="search-form__search-error" data-search-error>
                 This field cannot be empty.Enter a movie name.
               </div>
             </form>
+
+            <!-- Header bottom -->
           </div>
           <div class="header__bottom">
             <a class="logo" href="index.html">
-              <svg
-                class="logo__icon"
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M26.4265 2.66675H5.57317C3.96786 2.66675 2.6665 3.96811 2.6665 5.57341V26.4267C2.6665 28.0321 3.96786 29.3334 5.57317 29.3334H26.4265C28.0318 29.3334 29.3332 28.0321 29.3332 26.4267V5.57341C29.3332 3.96811 28.0318 2.66675 26.4265 2.66675Z"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M9.3335 2.66675V29.3334"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M22.6665 2.66675V29.3334"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M2.6665 16H29.3332"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M2.6665 9.33325H9.33317"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M2.6665 22.6667H9.33317"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M22.6665 22.6667H29.3332"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M22.6665 9.33325H29.3332"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
+              <img class="logo__icon" src="./images/logo/logo.svg" alt="Movie tape logo" />
               <span class="logo__title">Filmoteka</span></a
             >
             <div class="library-btns" data-library-btns>
-              <button class="library-btn library-btn--watched" data-watched>Watched</button>
               <button class="library-btn library-btn--queue" data-queue>Queue</button>
             </div>
           </div>
         </div>
       </header>
       <main>
+        <!-- Movies section -->
         <section class="movies">
           <div class="container">
             <div class="movies__trending" data-trending></div>
@@ -134,28 +65,96 @@
           </div>
         </section>
       </main>
+
+      <!-- Footer -->
       <footer class="footer">
         <div class="container">
           <div class="copyright">
             © 2023 | All Rights Reserved | Developed with
-            <span class="heart"></span> by GoIT Student
+            <span class="heart">
+              <svg>
+                <use href="images/sprite.svg#heart"></use>
+              </svg>
+            </span>
+            <a class="footer__link" href="https://github.com/ol-morar" target="_blank">by GoIT Student</a>
           </div>
         </div>
       </footer>
     </div>
+
+    <!-- Modal  -->
     <div class="modal" data-modal>
+      <!-- Modal content -->
       <div class="modal__content" data-modal-content>
         <button class="modal__close-btn" data-close-modal>
-          <svg class="close-icon" width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 8L22 22" stroke-width="2" />
-            <path d="M8 22L22 8" stroke-width="2" />
+          <svg class="close-icon">
+            <use href="images/sprite.svg#close"></use>
           </svg>
         </button>
-        <div class="modal-btns" data-modal-buttons>
-          <button class="modal-btns modal-btns--watched" data-add-to-watched>Add to watched</button>
-          <button class="modal-btns modal-btns--queue" data-add-to-queue>Add to queue</button>
+
+        <!-- Modal content item-->
+        <div class="modal__content-item" data-modal-content-item>
+          <img class="modal__img" width="400" height="300" />
+          <div class="modal-info">
+            <h3 class="modal-info__title"></h3>
+            <ul class="modal-info__list">
+              <li class="modal-info__item">
+                <span class="modal-info__votes-title">Vote / Votes</span>
+                <span class="modal-info__votes-number"></span>
+              </li>
+              <li class="modal-info__item">
+                <span class="modal-info__popularity-title">Popularity</span>
+                <span class="modal-info__popularity-number"></span>
+              </li>
+              <li class="modal-info__item">
+                <span class="modal-info__original-title">Original title</span>
+                <span class="modal-info__original-title-name"></span>
+              </li>
+              <li class="modal-info__item">
+                <span class="modal-info__genre-title">Genre </span>
+              </li>
+            </ul>
+            <div class="modal-about">
+              <p class="modal-about__title">About</p>
+              <p class="modal-about__descr"></p>
+            </div>
+
+            <!-- Modal content buttons -->
+            <div class="modal-btns" data-modal-buttons>
+              <button class="modal-btns modal-btns--trailer" data-watch-trailer>
+                Watch trailer
+                <svg>
+                  <use href="images/sprite.svg#clapperboard"></use>
+                </svg>
+              </button>
+              <button class="modal-btns modal-btns--queue" data-add-to-queue>
+                Add to queue
+                <svg>
+                  <use href="images/sprite.svg#glasses"></use>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal iframe trailer -->
+        <div class="trailer" data-trailer-root>
+          <button class="trailer__close" data-close-trailer>
+            <svg class="close-icon">
+              <use href="images/sprite.svg#close"></use>
+            </svg>
+          </button>
+          <iframe
+            class="trailer__frame"
+            type="text/html"
+            frameborder="0"
+            width="400"
+            allowfullscreen
+            data-trailer-iframe
+          ></iframe>
         </div>
       </div>
     </div>
+    <!-- modal end -->
   </body>
 </html>
