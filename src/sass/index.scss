@@ -5,9 +5,12 @@
 @import 'common';
 @import 'container';
 
-@import 'components/pagination';
+@import 'components/logo';
+@import 'components/search-form';
+@import 'components/navigation';
 @import 'components/modal';
 @import 'components/library';
+@import 'components/iframe-trailer';
 
 @import 'sections/header';
 @import 'sections/movies';

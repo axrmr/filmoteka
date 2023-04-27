@@ -40,6 +40,15 @@ class FetchMovie {
 
     return trendingDataArr;
   }
+
+  async trailer(id) {
+    const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos`, {
+      params,
+    });
+    const { key: keyStr } = response.data.results[0];
+
+    return keyStr;
+  }
 }
 
 export default FetchMovie;

@@ -8,7 +8,6 @@ const { QUEUE_STORAGE_KEY } = GET_CONSTANTS();
 const dom = getDOMRefs();
 
 function onLibraryQueueClick(e) {
-  dom.libraryWatchedBtn.classList.remove('current');
   dom.libraryQueueBtn.classList.add('current');
 
   const queueMovieArr = $localStorage.get(QUEUE_STORAGE_KEY);

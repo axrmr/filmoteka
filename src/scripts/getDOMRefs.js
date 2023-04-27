@@ -1,18 +1,22 @@
 export default function getDOMRefs() {
   return {
-    trending: document.querySelector('[data-trending]'),
-    searchForm: document.querySelector('[data-form]'),
+    addToWatchedBtn: document.querySelector('[data-add-to-watched]'),
+    addToQueueBtn: document.querySelector('[data-add-to-queue]'),
+    closeModalBtn: document.querySelector('[data-close-modal]'),
+    closeTrailer: document.querySelector('[data-close-trailer]'),
+    home: document.querySelector('[data-home]'),
+    libraryButtonsRoot: document.querySelector('[data-library-btns]'),
+    libraryQueueBtn: document.querySelector('[data-queue]'),
+    libraryWatchedBtn: document.querySelector('[data-watched]'),
     modal: document.querySelector('[data-modal]'),
     modalContent: document.querySelector('[data-modal-content]'),
-    closeModalBtn: document.querySelector('[data-close-modal]'),
-    libraryButtonsRoot: document.querySelector('[data-library-btns]'),
+    modalBtnsRoot: document.querySelector('[data-modal-buttons]'),
     myLibrary: document.querySelector('[data-library]'),
-    addToQueueBtn: document.querySelector('[data-add-to-queue]'),
-    addToWatchedBtn: document.querySelector('[data-add-to-watched]'),
-    home: document.querySelector('[data-home]'),
-    libraryWatchedBtn: document.querySelector('[data-watched]'),
-    libraryQueueBtn: document.querySelector('[data-queue]'),
-
     paginationContainer: document.getElementById('tui-pagination-container'),
+    searchForm: document.querySelector('[data-form]'),
+    trending: document.querySelector('[data-trending]'),
+    trailerRoot: document.querySelector('[data-trailer-root]'),
+    trailerFrame: document.querySelector('[data-trailer-iframe]'),
+    watchTrailer: document.querySelector('[data-watch-trailer]'),
   };
 }
