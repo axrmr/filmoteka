@@ -1,4 +1,4 @@
-export default function getDOMRefs() {
+const getDOMRefs = () => {
   return {
     addToWatchedBtn: document.querySelector('[data-add-to-watched]'),
     addToQueueBtn: document.querySelector('[data-add-to-queue]'),
@@ -19,4 +19,6 @@ export default function getDOMRefs() {
     trailerFrame: document.querySelector('[data-trailer-iframe]'),
     watchTrailer: document.querySelector('[data-watch-trailer]'),
   };
-}
+};
+
+export default getDOMRefs;

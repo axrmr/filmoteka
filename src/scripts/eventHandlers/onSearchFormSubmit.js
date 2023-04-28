@@ -9,7 +9,7 @@ import showSearchError from '../showSearchError';
 const { GENRES_STORAGE_KEY } = GET_CONSTANTS();
 const dom = getDOMRefs();
 
-function onSearchFormSubmit(e) {
+const onSearchFormSubmit = e => {
   e.preventDefault();
 
   const trimmedSearchQuery = e.currentTarget.elements.searchQuery.value.trim();
@@ -27,11 +27,12 @@ function onSearchFormSubmit(e) {
       const movieItemsMarkup = createMovieItemMarkup(dataArr, genresArr);
 
       renderMovieMarkup(dom.trending, movieItemsMarkup);
+
       document.getElementById('tui-pagination-container').style.display = 'none';
     })
     .catch(console.log);
 
   this.reset();
-}
+};
 
 export default onSearchFormSubmit;

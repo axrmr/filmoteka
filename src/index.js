@@ -1,8 +1,8 @@
 import getDOMRefs from './scripts/getDOMRefs';
+import hideMobileKeyboardOnReturn from './scripts/hideMobileKeyboardOnReturn';
 
 // EventHandlers
 import handleModal from './scripts/eventHandlers/handleModal';
-import onAddToQueueClick from './scripts/eventHandlers/onAddToQueueClick';
 import onCloseTrailerClick from './scripts/eventHandlers/onCloseTrailerClick';
 import onDOMContentLoaded from './scripts/eventHandlers/onDOMContentLoaded';
 import onHomeClick from './scripts/eventHandlers/onHomeClick';
@@ -30,3 +30,5 @@ dom.trending.addEventListener('click', onMovieItemClick);
 dom.watchTrailer.addEventListener('click', () => {
   dom.trailerRoot.classList.add('visible');
 });
+
+hideMobileKeyboardOnReturn(dom.searchForm);
