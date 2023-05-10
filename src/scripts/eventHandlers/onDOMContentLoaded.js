@@ -1,11 +1,10 @@
 import GET_CONSTANTS from '../ GET_CONSTANTS';
-import FetchMovie from '../FetchMovie';
+import MoviesService from '../API/MoviesService';
 import createMovieItemMarkup from '../createMovieItemMarkup';
 import getDOMRefs from '../getDOMRefs';
 import $localStorage from '../localStorage';
 import renderMovieMarkup from '../renderMovieMarkup';
 
-const fetchMovie = new FetchMovie();
 const dom = getDOMRefs();
 const {
   GENRES_STORAGE_KEY,
@@ -16,8 +15,8 @@ const {
 } = GET_CONSTANTS();
 
 function onDOMContentLoaded() {
-  fetchMovie.genres().then(genresArr => $localStorage.save(GENRES_STORAGE_KEY, genresArr));
-  fetchMovie.trending().then(trendingDataArr => {
+  MoviesService.fetchGenres().then(genresArr => $localStorage.save(GENRES_STORAGE_KEY, genresArr));
+  MoviesService.fetchTrending().then(trendingDataArr => {
     $localStorage.save(CURRENT_PAGE_MOVIES_STORAGE_KEY, trendingDataArr);
     $localStorage.save(HOME_PAGE_MOVIES, trendingDataArr);
 

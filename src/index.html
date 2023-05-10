@@ -15,15 +15,16 @@
       <header class="header">
         <div class="container">
           <!-- Header top -->
+
           <div class="header__top">
             <!-- Navigation -->
             <nav class="nav">
               <ul class="nav__list">
                 <li class="nav__item">
-                  <a href="" class="nav__link nav__link--current" data-home>Home</a>
+                  <button class="nav__btn nav__btn--current" data-home>Home</button>
                 </li>
                 <li class="nav__item">
-                  <a href="#" class="nav__link" data-library>My Library</a>
+                  <button class="nav__btn" data-library>My Library</button>
                 </li>
               </ul>
             </nav>
@@ -46,7 +47,7 @@
             <!-- Header bottom -->
           </div>
           <div class="header__bottom">
-            <a class="logo" href="index.html">
+            <a class="logo" href="index.html" data-logo>
               <img class="logo__icon" src="./images/logo/logo.svg" alt="Movie tape logo" />
               <span class="logo__title">Filmoteka</span></a
             >
@@ -80,81 +81,56 @@
           </div>
         </div>
       </footer>
-    </div>
+      <!-- Backdrop  -->
+      <div class="backdrop" data-backdrop>
+        <!-- Modal  -->
+        <div class="modal" data-modal>
+          <button class="modal__close-btn" data-close-modal>
+            <svg class="close-icon">
+              <use href="./images/sprite.svg#close"></use>
+            </svg>
+          </button>
 
-    <!-- Modal  -->
-    <div class="modal" data-modal>
-      <!-- Modal content -->
-      <div class="modal__content" data-modal-content>
-        <button class="modal__close-btn" data-close-modal>
-          <svg class="close-icon">
-            <use href="./images/sprite.svg#close"></use>
-          </svg>
-        </button>
-
-        <!-- Modal content item-->
-        <div class="modal__content-item" data-modal-content-item>
-          <img class="modal__img" width="400" height="300" />
-          <div class="modal-info">
-            <h3 class="modal-info__title"></h3>
-            <ul class="modal-info__list">
-              <li class="modal-info__item">
-                <span class="modal-info__votes-title">Vote / Votes</span>
-                <span class="modal-info__votes-number"></span>
-              </li>
-              <li class="modal-info__item">
-                <span class="modal-info__popularity-title">Popularity</span>
-                <span class="modal-info__popularity-number"></span>
-              </li>
-              <li class="modal-info__item">
-                <span class="modal-info__original-title">Original title</span>
-                <span class="modal-info__original-title-name"></span>
-              </li>
-              <li class="modal-info__item">
-                <span class="modal-info__genre-title">Genre </span>
-              </li>
-            </ul>
-            <div class="modal-about">
-              <p class="modal-about__title">About</p>
-              <p class="modal-about__descr"></p>
-            </div>
-
-            <!-- Modal content buttons -->
-            <div class="modal-btns" data-modal-buttons>
-              <button class="modal-btns modal-btns--trailer" data-watch-trailer>
-                Watch trailer
+          <!-- Modal content -->
+          <div class="modal__content" data-modal-content>
+            <!-- Modal movie-->
+            <div class="modal-movie" data-modal-movie></div>
+            <!-- Modal buttons -->
+            <div class="modal-btns-wrap">
+              <button class="modal-trailer-btn" data-watch-trailer>
+                <span class="modal-trailer-btn__label"> Watch trailer </span>
                 <svg>
                   <use href="./images/sprite.svg#clapperboard"></use>
                 </svg>
               </button>
-              <button class="modal-btns modal-btns--queue" data-add-to-queue>
-                Add to queue
+              <button class="modal-queue-btn" data-add-to-queue>
+                <span class="modal-queue-btn__label"> Add to queue </span>
                 <svg>
                   <use href="./images/sprite.svg#glasses"></use>
                 </svg>
               </button>
             </div>
-          </div>
-        </div>
 
-        <!-- Modal iframe trailer -->
-        <div class="trailer" data-trailer-root>
-          <button class="trailer__close" data-close-trailer>
-            <svg class="close-icon">
-              <use href="./images/sprite.svg#close"></use>
-            </svg>
-          </button>
-          <iframe
-            class="trailer__frame"
-            type="text/html"
-            frameborder="0"
-            width="400"
-            allowfullscreen
-            data-trailer-iframe
-          ></iframe>
+            <!-- Modal trailer -->
+            <div class="trailer" data-trailer-root>
+              <button class="trailer__close" data-close-trailer>
+                <svg class="close-icon">
+                  <use href="./images/sprite.svg#close"></use>
+                </svg>
+              </button>
+              <iframe
+                class="trailer__frame"
+                type="text/html"
+                frameborder="0"
+                width="400"
+                allowfullscreen
+                data-trailer-iframe
+                title="Trailer"
+              ></iframe>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <!-- modal end -->
   </body>
 </html>

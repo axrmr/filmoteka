@@ -1,6 +1,6 @@
 import $localStorage from './localStorage';
 
-const removeSelectedMovieFromStorage = (key, id) => {
+const removeMovieFromStorage = (key, id) => {
   const arr = $localStorage.get(key);
 
   $localStorage.save(
@@ -9,4 +9,4 @@ const removeSelectedMovieFromStorage = (key, id) => {
   );
 };
 
-export default removeSelectedMovieFromStorage;
+export default removeMovieFromStorage;

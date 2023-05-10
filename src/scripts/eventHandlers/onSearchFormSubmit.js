@@ -1,9 +1,9 @@
 import GET_CONSTANTS from '../ GET_CONSTANTS';
+import MoviesService from '../API/MoviesService';
 import createMovieItemMarkup from '../createMovieItemMarkup';
 import getDOMRefs from '../getDOMRefs';
 import $localStorage from '../localStorage';
 import renderMovieMarkup from '../renderMovieMarkup';
-import searchMovies from '../searchMovie';
 import showSearchError from '../showSearchError';
 
 const { GENRES_STORAGE_KEY } = GET_CONSTANTS();
@@ -17,7 +17,7 @@ const onSearchFormSubmit = e => {
     showSearchError();
     return;
   }
-  searchMovies(trimmedSearchQuery)
+  MoviesService.searchMovie(trimmedSearchQuery)
     .then(dataArr => {
       if (!dataArr.length) {
         showSearchError();
@@ -32,7 +32,7 @@ const onSearchFormSubmit = e => {
     })
     .catch(console.log);
 
-  this.reset();
+  e.currentTarget.reset();
 };
 
 export default onSearchFormSubmit;

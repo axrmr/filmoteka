@@ -26,15 +26,20 @@
     }
   }
 
-  &__link {
+  &__btn {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     padding: 0 23px;
+    font-size: inherit;
+    font-weight: inherit;
+    text-transform: uppercase;
     background-color: var(--light);
     border-radius: 100px;
+    border: transparent;
     transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    cursor: pointer;
 
     &:hover,
     &:focus {

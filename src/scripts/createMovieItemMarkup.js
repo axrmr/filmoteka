@@ -11,7 +11,7 @@ const createMovieItemMarkup = dataArr => {
       const rating = movie.vote_average.toString().slice(0, 3);
 
       return `
-      <div class="movies__item" data-movies-item data-id="${id}">
+      <div class="movies__item" data-movies-item data-movie-id="${id}">
          <img class="movies__img" src="${poster}" alt="${name}" width="400" height="300"/>
          <div class="movies-info">
           <h3 class="movies-info__title">${name}</h3>

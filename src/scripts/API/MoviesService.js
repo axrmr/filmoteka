@@ -1,18 +1,19 @@
 import axios from 'axios';
-import API_KEY from './API_KEY';
+import API_KEY from '../API_KEY';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 const genres = '/genre/movie/list';
 const details = '/movie/';
 const trending = '/trending/movie/week';
+const searchMovie = '/search/movie';
 
 const params = {
   api_key: API_KEY,
   language: 'en-US',
 };
 
-class FetchMovie {
-  async genres() {
+class MoviesService {
+  static async fetchGenres() {
     const response = await axios.get(BASE_URL + genres, {
       params,
     });
@@ -21,7 +22,7 @@ class FetchMovie {
     return genresArr;
   }
 
-  async details(id) {
+  static async fetchDetails(id) {
     const response = await axios.get(BASE_URL + details + id, {
       params,
     });
@@ -29,7 +30,7 @@ class FetchMovie {
     return response.data;
   }
 
-  async trending(page = 1) {
+  static async fetchTrending(page = 1) {
     const response = await axios.get(BASE_URL + trending, {
       params: {
         ...params,
@@ -41,7 +42,7 @@ class FetchMovie {
     return trendingDataArr;
   }
 
-  async trailer(id) {
+  static async fetchTrailer(id) {
     const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos`, {
       params,
     });
@@ -49,6 +50,17 @@ class FetchMovie {
 
     return keyStr;
   }
+
+  static async searchMovie(searchQuery) {
+    const response = await axios.get(BASE_URL + searchMovie, {
+      params: {
+        ...params,
+        query: searchQuery,
+      },
+    });
+
+    return response.data.results;
+  }
 }
 
-export default FetchMovie;
+export default MoviesService;

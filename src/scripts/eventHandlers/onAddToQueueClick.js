@@ -1,26 +1,22 @@
 import GET_CONSTANTS from '../ GET_CONSTANTS';
-import removeSelectedMovieFromStorage from '../removeSelectedMovieFromStorage';
-import saveSelectedMovieToStorage from '../saveSelectedMovieToStorage';
+import isStorageNotIncludeMovie from '../isStorageNotIncludeMovie';
 import $localStorage from '../localStorage';
+import removeMovieFromStorage from '../removeMovieFromStorage';
+import saveMovieToStorage from '../saveMovieToStorage';
 
 const { CURRENT_PAGE_MOVIES_STORAGE_KEY, QUEUE_STORAGE_KEY } = GET_CONSTANTS();
 
-function onAddToQueueClick(e) {
-  const target = e.target;
-  const movieToAddId = +document.querySelector('[data-modal-content-item]').dataset.id;
+function onAddToQueueClick() {
+  const movieId = +document.querySelector('[data-modal-movie-inner]').dataset.modalMovieId;
   const currPageMoviesData = $localStorage.get(CURRENT_PAGE_MOVIES_STORAGE_KEY);
-  const movieToAddObj = currPageMoviesData.find(movie => movie.id === +movieToAddId);
+  const movieObj = currPageMoviesData.find(movie => movie.id === movieId);
 
-  if (!target.hasAttribute('data-in-queue')) {
-    saveSelectedMovieToStorage({ key: QUEUE_STORAGE_KEY, movieObj: movieToAddObj, movieId: movieToAddId });
-    this.setAttribute('data-in-queue', '');
-    this.textContent = 'Remove';
-    return;
-  }
-  if (target.hasAttribute('data-in-queue')) {
-    removeSelectedMovieFromStorage(QUEUE_STORAGE_KEY, movieToAddId);
-    this.textContent = 'Add to queue';
-    this.removeAttribute('data-in-queue');
+  if (isStorageNotIncludeMovie(QUEUE_STORAGE_KEY, movieId)) {
+    saveMovieToStorage(QUEUE_STORAGE_KEY, movieObj);
+    this.querySelector('.modal-queue-btn__label').textContent = 'Remove';
+  } else {
+    removeMovieFromStorage(QUEUE_STORAGE_KEY, movieId);
+    this.querySelector('.modal-queue-btn__label').textContent = 'Add to queue';
   }
 }
 

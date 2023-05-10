@@ -4,8 +4,16 @@ import toggleModal from '../toggleModal';
 
 const dom = getDOMRefs();
 
-function backdropClick(e) {
-  if (e.target.hasAttribute('data-modal')) {
+const clearModalMovieInner = () => {
+  const id = setTimeout(() => {
+    dom.modalMovie.innerHTML = '';
+    clearTimeout(id);
+  }, 300);
+};
+
+const backdropClick = e => {
+  if (e.target.hasAttribute('data-backdrop')) {
+    clearModalMovieInner();
     toggleModal();
     removeEventListener('keydown', escKeyDown);
 
@@ -14,19 +22,22 @@ function backdropClick(e) {
       clearTrailerSrc(dom.trailerFrame);
     }
   }
-}
+};
 
-function closeBtnClick() {
+const closeBtnClick = () => {
+  clearModalMovieInner();
   toggleModal();
   removeEventListener('keydown', escKeyDown);
-}
+};
 
-function escKeyDown(e) {
+const escKeyDown = e => {
   if (e.code === 'Escape') {
+    clearModalMovieInner();
+
     toggleModal();
     removeEventListener('keydown', escKeyDown);
   }
-}
+};
 
 export default {
   backdropClick,
