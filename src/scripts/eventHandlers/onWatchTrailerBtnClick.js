@@ -13,7 +13,7 @@ const onWatchTrailerBtnClick = () => {
       if (!key) return;
 
       loader.hide();
-      trailerFrameEl.src = `http://www.youtube.com/embed/${key}`;
+      trailerFrameEl.src = `http://www.youtube.com/embed/${key}/`;
       trailerRootEl.classList.add('visible');
     })
     .catch(console.error);
