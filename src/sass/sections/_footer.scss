@@ -2,6 +2,10 @@
   padding: 30px 0;
   background-color: var(--footer-bg);
 
+  .container {
+    position: relative;
+  }
+
   .copyright {
     text-align: center;
     font-size: 14px;

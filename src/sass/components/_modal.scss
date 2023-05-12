@@ -4,29 +4,28 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: auto;
+  z-index: 999;
+  display: none;
 
-  background-color: rgba($color: #000000, $alpha: 0.75);
+  background-color: rgba($color: #000, $alpha: 0.7);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   cursor: pointer;
-  transition: opacity 0.25s linear, visibility 0.25s linear;
+  transition: opacity 0.2s linear, visibility 0.2s linear;
 
   &.visible {
-    z-index: 200;
     opacity: 1;
     visibility: visible;
     pointer-events: all;
   }
 }
+
 .modal {
-  position: relative;
+  position: absolute;
+  inset: 0;
+  margin: auto;
   max-width: 320px;
   min-height: 440px;
   padding: 40px 20px 20px;
@@ -38,7 +37,7 @@
   transform: scale(0.9);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.25s linear, visibility 0.25s linear, transform 0.25s linear;
+  transition: opacity 0.25s linear, visibility 0.25s linear, transform 0.3s linear;
 
   &.visible {
     transform: scale(1);

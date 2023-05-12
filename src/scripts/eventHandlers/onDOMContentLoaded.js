@@ -1,11 +1,12 @@
 import GET_CONSTANTS from '../ GET_CONSTANTS';
+import $localStorage from '../$localStorage';
 import MoviesService from '../API/MoviesService';
 import createMovieItemMarkup from '../createMovieItemMarkup';
 import getDOMRefs from '../getDOMRefs';
-import $localStorage from '../$localStorage';
+import loader from '../loader';
 import renderMovieMarkup from '../renderMovieMarkup';
 
-const { trendingEl } = getDOMRefs();
+const { trendingEl, modalBackdropEl } = getDOMRefs();
 const {
   GENRES_STORAGE_KEY,
   CURRENT_PAGE_MOVIES_STORAGE_KEY,
@@ -15,8 +16,18 @@ const {
 } = GET_CONSTANTS();
 
 function onDOMContentLoaded() {
+  if ($localStorage.get(WATCHED_STORAGE_KEY) === undefined || $localStorage.get(QUEUE_STORAGE_KEY) === undefined) {
+    $localStorage.save(WATCHED_STORAGE_KEY, []);
+    $localStorage.save(QUEUE_STORAGE_KEY, []);
+  }
+
+  loader.show();
+  modalBackdropEl.style.display = 'flex';
+
   MoviesService.fetchGenres()
-    .then(genresArr => $localStorage.save(GENRES_STORAGE_KEY, genresArr))
+    .then(genresArr => {
+      $localStorage.save(GENRES_STORAGE_KEY, genresArr);
+    })
     .catch(console.error);
 
   MoviesService.fetchTrending()
@@ -25,13 +36,9 @@ function onDOMContentLoaded() {
       $localStorage.save(HOME_PAGE_MOVIES, trendingDataArr);
 
       renderMovieMarkup(trendingEl, createMovieItemMarkup(trendingDataArr));
+      loader.hide();
     })
     .catch(console.error);
-
-  if ($localStorage.get(WATCHED_STORAGE_KEY) === undefined || $localStorage.get(QUEUE_STORAGE_KEY) === undefined) {
-    $localStorage.save(WATCHED_STORAGE_KEY, []);
-    $localStorage.save(QUEUE_STORAGE_KEY, []);
-  }
 }
 
 export default onDOMContentLoaded;

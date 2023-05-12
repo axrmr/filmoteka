@@ -63,7 +63,6 @@
           <div class="container">
             <div class="movies__trending" data-trending></div>
             <div class="movies__trending movies__queue" data-queue-root></div>
-            <div id="tui-pagination-container" class="tui-pagination"></div>
           </div>
         </section>
       </main>
@@ -71,6 +70,7 @@
       <!-- Footer -->
       <footer class="footer">
         <div class="container">
+          <div id="tui-pagination-container" class="tui-pagination"></div>
           <div class="copyright">
             © 2023 | All Rights Reserved | Developed with
             <span class="heart">
@@ -78,10 +78,11 @@
                 <use href="./images/sprite.svg#heart"></use>
               </svg>
             </span>
-            <a class="footer__link" href="https://github.com/ol-morar" target="_blank">by GoIT Student</a>
+            <a class="footer__link" href="https://github.com/axmrmr" target="_blank">Olexandr Morar</a>
           </div>
         </div>
       </footer>
+
       <!-- Backdrop  -->
       <div class="backdrop" data-backdrop>
         <!-- Modal  -->
@@ -111,46 +112,33 @@
                 </svg>
               </button>
             </div>
-
-            <!-- Modal trailer -->
-            <!-- <div class="trailer" data-trailer-root>
-              <button class="trailer__close" data-close-trailer>
-                <svg class="close-icon">
-                  <use href="./images/sprite.svg#close"></use>
-                </svg>
-              </button>
-              <iframe
-                class="trailer__frame"
-                type="text/html"
-                frameborder="0"
-                width="400"
-                allowfullscreen
-                data-trailer-iframe
-                title="Trailer"
-              ></iframe>
-            </div> -->
           </div>
           <!-- modal content end -->
         </div>
         <!-- modal  end -->
+        <!-- Trailer frame -->
+        <div class="trailer" data-trailer-root>
+          <button class="trailer__close" data-close-trailer>
+            <svg class="close-icon">
+              <use href="./images/sprite.svg#close"></use>
+            </svg>
+          </button>
+          <iframe
+            class="trailer__frame"
+            type="text/html"
+            frameborder="0"
+            width="400"
+            allowfullscreen
+            data-trailer-iframe
+            title="Trailer"
+          ></iframe>
+        </div>
+        <!-- trailer end -->
       </div>
-      <div class="trailer" data-trailer-root>
-        <button class="trailer__close" data-close-trailer>
-          <svg class="close-icon">
-            <use href="./images/sprite.svg#close"></use>
-          </svg>
-        </button>
-        <iframe
-          class="trailer__frame"
-          type="text/html"
-          frameborder="0"
-          width="400"
-          allowfullscreen
-          data-trailer-iframe
-          title="Trailer"
-        ></iframe>
-      </div>
-      <!-- backdrop end -->
+      <!-- backdrop  end -->
+    </div>
+    <div class="loader" data-loader>
+      <img src="./images/ezgif.com-gif-maker.gif" alt="Running popcorn gif" height="100" width="  100" />
     </div>
   </body>
 </html>

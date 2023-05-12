@@ -11,35 +11,33 @@ import onMyLibraryClick from './scripts/eventHandlers/onMyLibBtnClick';
 import onSearchFormSubmit from './scripts/eventHandlers/onSearchFormSubmit';
 
 // Pagination
+import onWatchTrailerBtnClick from './scripts/eventHandlers/onWatchTrailerBtnClick';
 import './scripts/pagination';
 
 const {
   closeModalBtnEl,
   closeTrailerBtnEl,
   homeBtnEl,
-  libQueueBtnEl,
   logoEl,
   modalBackdropEl,
   myLibBtnEl,
   searchFormEl,
-  trendingEl,
   addToQueueBtnEl,
-  watchTrailerEl,
-  trailerRootEl,
+  watchTrailerBtnEl,
   moviesRootEl,
 } = getDOMRefs();
+
+// TRY CATCH ERROR IF NULL
+// CHANGE TOGGLE MODAL TO TOGGLE ELEM VISIBILITY
 
 document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
 closeModalBtnEl.addEventListener('click', handleModal.closeBtnClick);
 closeTrailerBtnEl.addEventListener('click', onCloseTrailerClick);
 homeBtnEl.addEventListener('click', onHomeClick);
-// libQueueBtnEl.addEventListener('click', onLibQueueBtnClick);
 logoEl.addEventListener('click', onHomeClick);
 modalBackdropEl.addEventListener('click', handleModal.backdropClick);
 myLibBtnEl.addEventListener('click', onMyLibraryClick);
 searchFormEl.addEventListener('submit', onSearchFormSubmit);
 moviesRootEl.addEventListener('click', onMovieItemClick);
 addToQueueBtnEl.addEventListener('click', onAddToQueueClick);
-watchTrailerEl.addEventListener('click', () => {
-  trailerRootEl.classList.add('visible');
-});
+watchTrailerBtnEl.addEventListener('click', onWatchTrailerBtnClick);

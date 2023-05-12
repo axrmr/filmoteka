@@ -5,6 +5,7 @@ const getDOMRefs = () => {
     closeModalBtnEl: document.querySelector('[data-close-modal]'),
     closeTrailerBtnEl: document.querySelector('[data-close-trailer]'),
     homeBtnEl: document.querySelector('[data-home]'),
+    loaderEl: document.querySelector('[data-loader]'),
     logoEl: document.querySelector('[data-logo]'),
     libButtonsRootEl: document.querySelector('[data-library-btns]'),
     libQueueBtnEl: document.querySelector('[data-queue]'),
@@ -21,7 +22,7 @@ const getDOMRefs = () => {
     trailerRootEl: document.querySelector('[data-trailer-root]'),
     trailerFrameEl: document.querySelector('[data-trailer-iframe]'),
     queueRootEl: document.querySelector('[data-queue-root]'),
-    watchTrailerEl: document.querySelector('[data-watch-trailer]'),
+    watchTrailerBtnEl: document.querySelector('[data-watch-trailer]'),
   };
 };
 
