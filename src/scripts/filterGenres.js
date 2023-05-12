@@ -1,16 +1,10 @@
-import GET_CONSTANTS from './ GET_CONSTANTS';
-import $localStorage from './localStorage'; // save, get, remove - methods
-
-const { GENRES_STORAGE_KEY } = GET_CONSTANTS();
-
-const filterGenres = arrGenresId => {
+const filterGenres = (genresArr, genresIdArr) => {
   const genresName = [];
-  const arrGenresName = $localStorage.get(GENRES_STORAGE_KEY);
 
-  arrGenresId.forEach(elem =>
-    arrGenresName.filter(genre => genre.id === elem).forEach(genre => genresName.push(genre.name))
+  genresIdArr.forEach(elem =>
+    genresArr.filter(genre => genre.id === elem).forEach(genre => genresName.push(genre.name))
   );
-  return genresName.join(', ');
+  return genresName;
 };
 
 export default filterGenres;

@@ -1,13 +1,13 @@
 import GET_CONSTANTS from '../ GET_CONSTANTS';
+import $localStorage from '../$localStorage';
 import MoviesService from '../API/MoviesService';
 import createMovieItemMarkup from '../createMovieItemMarkup';
 import getDOMRefs from '../getDOMRefs';
-import $localStorage from '../localStorage';
 import renderMovieMarkup from '../renderMovieMarkup';
 import showSearchError from '../showSearchError';
 
 const { GENRES_STORAGE_KEY } = GET_CONSTANTS();
-const dom = getDOMRefs();
+const { trendingEl } = getDOMRefs();
 
 const onSearchFormSubmit = e => {
   e.preventDefault();
@@ -24,13 +24,11 @@ const onSearchFormSubmit = e => {
         return;
       }
       const genresArr = $localStorage.get(GENRES_STORAGE_KEY);
-      const movieItemsMarkup = createMovieItemMarkup(dataArr, genresArr);
-
-      renderMovieMarkup(dom.trending, movieItemsMarkup);
+      renderMovieMarkup(trendingEl, createMovieItemMarkup(dataArr, genresArr));
 
       document.getElementById('tui-pagination-container').style.display = 'none';
     })
-    .catch(console.log);
+    .catch(console.error);
 
   e.currentTarget.reset();
 };

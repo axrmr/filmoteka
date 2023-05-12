@@ -1,11 +1,11 @@
-import getDOMRefs from '../getDOMRefs';
 import clearTrailerSrc from '../clearTrailerSrc';
+import getDOMRefs from '../getDOMRefs';
 
-const dom = getDOMRefs();
+const { trailerRootEl, trailerFrameEl } = getDOMRefs();
 
 function onCloseTrailerClick() {
-  dom.trailerRoot.classList.remove('visible');
-  clearTrailerSrc(dom.trailerFrame);
+  trailerRootEl.classList.remove('visible');
+  clearTrailerSrc(trailerFrameEl);
 }
 
 export default onCloseTrailerClick;

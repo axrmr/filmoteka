@@ -1,4 +1,4 @@
-import $localStorage from './localStorage';
+import $localStorage from './$localStorage';
 
 const saveMovieToStorage = (key, movieObj) => {
   const arr = $localStorage.get(key);

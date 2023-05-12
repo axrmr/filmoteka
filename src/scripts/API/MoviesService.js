@@ -1,7 +1,8 @@
 import axios from 'axios';
 import API_KEY from '../API_KEY';
 
-const BASE_URL = 'https://api.themoviedb.org/3';
+axios.defaults.baseURL = 'https://api.themoviedb.org/3';
+
 const genres = '/genre/movie/list';
 const details = '/movie/';
 const trending = '/trending/movie/week';
@@ -14,7 +15,7 @@ const params = {
 
 class MoviesService {
   static async fetchGenres() {
-    const response = await axios.get(BASE_URL + genres, {
+    const response = await axios.get(genres, {
       params,
     });
     const { genres: genresArr } = response.data;
@@ -23,7 +24,7 @@ class MoviesService {
   }
 
   static async fetchDetails(id) {
-    const response = await axios.get(BASE_URL + details + id, {
+    const response = await axios.get(details + id, {
       params,
     });
 
@@ -31,7 +32,7 @@ class MoviesService {
   }
 
   static async fetchTrending(page = 1) {
-    const response = await axios.get(BASE_URL + trending, {
+    const response = await axios.get(trending, {
       params: {
         ...params,
         page,
@@ -43,7 +44,7 @@ class MoviesService {
   }
 
   static async fetchTrailer(id) {
-    const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos`, {
+    const response = await axios.get(`/movie/${id}/videos`, {
       params,
     });
     const { key: keyStr } = response.data.results[0];
@@ -52,7 +53,7 @@ class MoviesService {
   }
 
   static async searchMovie(searchQuery) {
-    const response = await axios.get(BASE_URL + searchMovie, {
+    const response = await axios.get(searchMovie, {
       params: {
         ...params,
         query: searchQuery,

@@ -1,10 +1,10 @@
 import getDOMRefs from './getDOMRefs';
 
-const dom = getDOMRefs();
+const { modalBackdropEl, modalEl } = getDOMRefs();
 
 const toggleModal = () => {
-  dom.modalBackdrop.classList.toggle('visible');
-  dom.modal.classList.toggle('visible');
+  modalBackdropEl.classList.toggle('visible');
+  modalEl.classList.toggle('visible');
 };
 
 export default toggleModal;

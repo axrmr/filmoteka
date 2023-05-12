@@ -2,11 +2,11 @@ import clearTrailerSrc from '../clearTrailerSrc';
 import getDOMRefs from '../getDOMRefs';
 import toggleModal from '../toggleModal';
 
-const dom = getDOMRefs();
+const { modalMovieEl, trailerRootEl, trailerFrameEl } = getDOMRefs();
 
 const clearModalMovieInner = () => {
   const id = setTimeout(() => {
-    dom.modalMovie.innerHTML = '';
+    modalMovieEl.innerHTML = '';
     clearTimeout(id);
   }, 300);
 };
@@ -17,9 +17,9 @@ const backdropClick = e => {
     toggleModal();
     removeEventListener('keydown', escKeyDown);
 
-    if (dom.trailerRoot.classList.contains('visible')) {
-      dom.trailerRoot.classList.remove('visible');
-      clearTrailerSrc(dom.trailerFrame);
+    if (trailerRootEl.classList.contains('visible')) {
+      trailerRootEl.classList.remove('visible');
+      clearTrailerSrc(trailerFrameEl);
     }
   }
 };
