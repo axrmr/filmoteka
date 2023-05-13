@@ -6,10 +6,6 @@
     padding: 32px 0 60px;
   }
 
-  .container {
-    position: relative;
-  }
-
   &__trending {
     padding-bottom: 40px;
 
@@ -27,20 +23,21 @@
 
   &__item {
     cursor: pointer;
+
     @include mq(mob-only) {
       margin-bottom: 20px;
     }
   }
   &__img {
+    max-height: 390px;
     margin-bottom: 10px;
     border-radius: 5px;
   }
 
   .movies-info {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-left: 5px;
+    align-items: baseline;
+    padding-right: 2px;
     color: var(--accent);
 
     @include mq(tab) {
@@ -49,24 +46,41 @@
     }
 
     &__title {
+      width: 277px;
       margin-bottom: 5px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
       text-transform: uppercase;
       color: var(--dark);
+
       @include mq(tab) {
+        width: 215px;
         font-size: 14px;
         font-weight: 500;
+      }
+      @include mq(desk) {
+        width: 279px;
+      }
+    }
+
+    &__genres {
+      @include mq(tab) {
+        max-width: 130px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
       }
     }
 
     &__year {
       padding: 0 5px;
-      border-left: 1px solid var(--accent);
-      border-right: 1px solid var(--accent);
     }
 
     &__rating {
       display: inline-block;
-      padding: 2px 8px;
+      margin-left: auto;
+      padding: 2px 8px 0;
       color: var(--light);
       background-color: var(--accent);
       border-radius: 4px;

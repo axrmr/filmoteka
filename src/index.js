@@ -12,6 +12,7 @@ import onSearchFormSubmit from './scripts/eventHandlers/onSearchFormSubmit';
 import onWatchTrailerBtnClick from './scripts/eventHandlers/onWatchTrailerBtnClick';
 
 // Pagination
+import hideMobileKeyboardOnReturn from './scripts/hideMobileKeyboardOnReturn';
 import './scripts/pagination';
 
 const {
@@ -29,7 +30,7 @@ const {
 
 // REFACTOR $LOCAL STORAGE. SHOULD NOT ADD NULL IN STORAGE
 // CHANGE TOGGLE MODAL TO TOGGLE ELEM VISIBILITY
-// IMPLEMENT CLOSURE OF KEYBOARD ON MOBILE
+// ADD IMAGE IF PAGE IS EMPTY
 
 document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
 closeModalBtnEl.addEventListener('click', handleModal.closeBtnClick);
@@ -39,6 +40,7 @@ logoEl.addEventListener('click', onHomeClick);
 modalBackdropEl.addEventListener('click', handleModal.backdropClick);
 myLibBtnEl.addEventListener('click', onMyLibraryClick);
 searchFormEl.addEventListener('submit', onSearchFormSubmit);
+searchFormEl.addEventListener('submit', hideMobileKeyboardOnReturn);
 moviesRootEl.addEventListener('click', onMovieItemClick);
-addToQueueBtnEl.addEventListener('click', onAddToQueueClick);
 watchTrailerBtnEl.addEventListener('click', onWatchTrailerBtnClick);
+addToQueueBtnEl.addEventListener('click', onAddToQueueClick);

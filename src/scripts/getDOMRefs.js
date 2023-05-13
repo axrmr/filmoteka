@@ -4,6 +4,7 @@ const getDOMRefs = () => {
     addToQueueBtnEl: document.querySelector('[data-add-to-queue]'),
     closeModalBtnEl: document.querySelector('[data-close-modal]'),
     closeTrailerBtnEl: document.querySelector('[data-close-trailer]'),
+    errorWrapEl: document.querySelector('[data-error-wrap]'),
     homeBtnEl: document.querySelector('[data-home]'),
     logoEl: document.querySelector('[data-logo]'),
     libButtonsRootEl: document.querySelector('[data-library-btns]'),

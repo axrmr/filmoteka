@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -39,9 +40,7 @@
                   <use href="./images/sprite.svg#search"></use>
                 </svg>
               </button>
-              <div class="search-form__search-error" data-search-error>
-                This field cannot be empty.Enter a movie name.
-              </div>
+              <div class="search-form__search-error" data-error-wrap></div>
             </form>
 
             <!-- Header bottom -->
@@ -60,7 +59,7 @@
       <main>
         <!-- Movies section -->
         <section class="movies" data-movies-root>
-          <div class="container">
+          <div class="container" data-container>
             <div class="movies__trending" data-trending></div>
             <div class="movies__trending movies__queue" data-queue-root></div>
           </div>

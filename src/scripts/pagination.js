@@ -11,9 +11,15 @@ const { CURRENT_PAGE_MOVIES_STORAGE_KEY } = GET_CONSTANTS();
 const { trendingEl, paginationRootEl, popcornLoaderEl } = getDOMRefs();
 const popcornLoader = new Loader({ el: popcornLoaderEl, className: 'visible' });
 
+let visiblePagesCount = 4;
+
+if (document.body.clientWidth > 767) {
+  visiblePagesCount = 10;
+}
+
 const pagination = new Pagination(paginationRootEl, {
   totalItems: 10000,
-  visiblePages: 4,
+  visiblePages: visiblePagesCount,
 });
 
 pagination.on('beforeMove', function (eventData) {
@@ -26,4 +32,6 @@ pagination.on('beforeMove', function (eventData) {
   });
 });
 
-export default pagination;
+
+
+export  {pagination};

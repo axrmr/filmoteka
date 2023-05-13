@@ -49,9 +49,10 @@
   }
   @include mq(tab) {
     max-width: 705px;
-    max-height: 520px;
+    max-height: 480px;
   }
   @include mq(desk) {
+    max-height: 520px;
     max-width: 805px;
   }
 
@@ -94,7 +95,7 @@
     }
 
     &__img {
-      object-fit: contain;
+      object-fit: cover;
 
       @include mq(mob-only) {
         margin-bottom: 15px;
@@ -103,11 +104,11 @@
         min-width: 265px;
         max-width: 325px;
         max-height: 400px;
-        margin-top: -15px;
       }
       @include mq(desk) {
         min-width: 320px;
         max-height: 480px;
+        margin-top: -15px;
       }
     }
 
@@ -117,7 +118,11 @@
 
     &__about {
       margin-bottom: 45px;
+
       @include mq(tab) {
+        max-height: 175px;
+        height: 100%;
+        overflow: auto;
         margin-bottom: 90px;
       }
     }
@@ -139,12 +144,8 @@
 
 .info-list {
   &__item {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    justify-items: start;
+    display: flex;
     gap: 50px;
-    width: 260px;
-
     color: #8c8c8c;
 
     &:not(:last-child) {
@@ -153,6 +154,7 @@
   }
 
   &__title {
+    width: 100px;
     color: var(--dark);
 
     @include mq(desk) {

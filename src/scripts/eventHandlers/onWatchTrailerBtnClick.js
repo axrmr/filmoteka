@@ -15,6 +15,7 @@ const onWatchTrailerBtnClick = () => {
 
       trailerFrameEl.src = `http://www.youtube.com/embed/${key}/`;
       trailerRootEl.classList.add('visible');
+
       popcornLoader.hide();
     })
     .catch(console.error);

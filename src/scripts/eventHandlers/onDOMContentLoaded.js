@@ -17,6 +17,7 @@ const {
 const popcornLoader = new Loader({ el: popcornLoaderEl, className: 'visible' });
 
 function onDOMContentLoaded() {
+  console.log('loaded');
   if ($localStorage.get(WATCHED_STORAGE_KEY) === undefined || $localStorage.get(QUEUE_STORAGE_KEY) === undefined) {
     $localStorage.save(WATCHED_STORAGE_KEY, []);
     $localStorage.save(QUEUE_STORAGE_KEY, []);

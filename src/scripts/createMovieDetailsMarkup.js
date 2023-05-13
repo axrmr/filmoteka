@@ -23,7 +23,10 @@ const createMovieDetailsMarkup = detailsArr => {
             </li>
             <li class="info-list__item">
               <span class="info-list__title">Genre </span>
-              <span class="info-list__aftertitle">${detailsArr.genres.map(genre => genre.name).join(', ')}</span>
+              <span class="info-list__aftertitle">${detailsArr.genres
+                .map(genre => genre.name)
+                .slice(0, 3)
+                .join(', ')}</span>
             </li>
           </ul>
           <div class="modal-movie__about movie-about">
