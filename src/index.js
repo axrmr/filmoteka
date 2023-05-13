@@ -10,9 +10,9 @@ import onMovieItemClick from './scripts/eventHandlers/onMovieItemClick';
 import onMyLibraryClick from './scripts/eventHandlers/onMyLibBtnClick';
 import onSearchFormSubmit from './scripts/eventHandlers/onSearchFormSubmit';
 import onWatchTrailerBtnClick from './scripts/eventHandlers/onWatchTrailerBtnClick';
+import hideMobileKeyboardOnReturn from './scripts/hideMobileKeyboardOnReturn';
 
 // Pagination
-import hideMobileKeyboardOnReturn from './scripts/hideMobileKeyboardOnReturn';
 import './scripts/pagination';
 
 const {
@@ -31,6 +31,7 @@ const {
 // REFACTOR $LOCAL STORAGE. SHOULD NOT ADD NULL IN STORAGE
 // CHANGE TOGGLE MODAL TO TOGGLE ELEM VISIBILITY
 // ADD IMAGE IF PAGE IS EMPTY
+// FIX SEARCH IN LIBRARY DOESNT GO ON HOME PAGE
 
 document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
 closeModalBtnEl.addEventListener('click', handleModal.closeBtnClick);
@@ -40,7 +41,6 @@ logoEl.addEventListener('click', onHomeClick);
 modalBackdropEl.addEventListener('click', handleModal.backdropClick);
 myLibBtnEl.addEventListener('click', onMyLibraryClick);
 searchFormEl.addEventListener('submit', onSearchFormSubmit);
-searchFormEl.addEventListener('submit', hideMobileKeyboardOnReturn);
 moviesRootEl.addEventListener('click', onMovieItemClick);
 watchTrailerBtnEl.addEventListener('click', onWatchTrailerBtnClick);
 addToQueueBtnEl.addEventListener('click', onAddToQueueClick);

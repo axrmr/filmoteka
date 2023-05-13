@@ -13,6 +13,7 @@ const onSearchFormSubmit = e => {
   e.preventDefault();
 
   const trimmedSearchQuery = e.currentTarget.elements.searchQuery.value.trim();
+
   if (!trimmedSearchQuery) {
     notify.fieldCantBeEmpty(errorWrapEl);
     return;
@@ -26,6 +27,7 @@ const onSearchFormSubmit = e => {
       }
       const genresArr = $localStorage.get(GENRES_STORAGE_KEY);
       renderMovieMarkup(trendingEl, createMovieItemMarkup(dataArr, genresArr));
+      e.currentTarget.elements.searchQuery.blur();
 
       document.getElementById('tui-pagination-container').style.display = 'none';
     })
