@@ -3,10 +3,10 @@ import $localStorage from '../$localStorage';
 import MoviesService from '../API/MoviesService';
 import createMovieItemMarkup from '../createMovieItemMarkup';
 import getDOMRefs from '../getDOMRefs';
-import loader from '../loader';
+import Loader from '../Loader';
 import renderMovieMarkup from '../renderMovieMarkup';
 
-const { trendingEl, modalBackdropEl } = getDOMRefs();
+const { trendingEl, modalBackdropEl, popcornLoaderEl } = getDOMRefs();
 const {
   GENRES_STORAGE_KEY,
   CURRENT_PAGE_MOVIES_STORAGE_KEY,
@@ -14,6 +14,7 @@ const {
   WATCHED_STORAGE_KEY,
   HOME_PAGE_MOVIES,
 } = GET_CONSTANTS();
+const popcornLoader = new Loader({ el: popcornLoaderEl, className: 'visible' });
 
 function onDOMContentLoaded() {
   if ($localStorage.get(WATCHED_STORAGE_KEY) === undefined || $localStorage.get(QUEUE_STORAGE_KEY) === undefined) {
@@ -21,7 +22,7 @@ function onDOMContentLoaded() {
     $localStorage.save(QUEUE_STORAGE_KEY, []);
   }
 
-  loader.show();
+  popcornLoader.show();
   modalBackdropEl.style.display = 'flex';
 
   MoviesService.fetchGenres()
@@ -36,7 +37,7 @@ function onDOMContentLoaded() {
       $localStorage.save(HOME_PAGE_MOVIES, trendingDataArr);
 
       renderMovieMarkup(trendingEl, createMovieItemMarkup(trendingDataArr));
-      loader.hide();
+      popcornLoader.hide();
     })
     .catch(console.error);
 }

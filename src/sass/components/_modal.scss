@@ -1,9 +1,6 @@
 .backdrop {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   overflow: auto;
   z-index: 999;
   display: none;
@@ -56,7 +53,6 @@
   }
   @include mq(desk) {
     max-width: 805px;
-    min-height: 530px;
   }
 
   &__close-btn {
@@ -107,12 +103,10 @@
         min-width: 265px;
         max-width: 325px;
         max-height: 400px;
-        height: 100%;
         margin-top: -15px;
       }
       @include mq(desk) {
         min-width: 320px;
-
         max-height: 480px;
       }
     }
@@ -124,7 +118,7 @@
     &__about {
       margin-bottom: 45px;
       @include mq(tab) {
-        margin-bottom: 70px;
+        margin-bottom: 90px;
       }
     }
 

@@ -9,9 +9,9 @@ import onHomeClick from './scripts/eventHandlers/onHomeBtnClick';
 import onMovieItemClick from './scripts/eventHandlers/onMovieItemClick';
 import onMyLibraryClick from './scripts/eventHandlers/onMyLibBtnClick';
 import onSearchFormSubmit from './scripts/eventHandlers/onSearchFormSubmit';
+import onWatchTrailerBtnClick from './scripts/eventHandlers/onWatchTrailerBtnClick';
 
 // Pagination
-import onWatchTrailerBtnClick from './scripts/eventHandlers/onWatchTrailerBtnClick';
 import './scripts/pagination';
 
 const {
@@ -27,8 +27,9 @@ const {
   moviesRootEl,
 } = getDOMRefs();
 
-// TRY CATCH ERROR IF NULL
+// REFACTOR $LOCAL STORAGE. SHOULD NOT ADD NULL IN STORAGE
 // CHANGE TOGGLE MODAL TO TOGGLE ELEM VISIBILITY
+// IMPLEMENT CLOSURE OF KEYBOARD ON MOBILE
 
 document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
 closeModalBtnEl.addEventListener('click', handleModal.closeBtnClick);
