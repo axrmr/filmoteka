@@ -8,8 +8,14 @@ import renderMovieMarkup from '../renderMovieMarkup';
 import toggleModal from '../toggleModal';
 import handleModal from './handleModal';
 
-const { QUEUE_STORAGE_KEY } = GET_CONSTANTS();
-const { addToQueueBtnEl, modalMovieEl, popcornLoaderEl } = getDOMRefs();
+const { QUEUE_STORAGE_KEY, WATCHED_STORAGE_KEY } = GET_CONSTANTS();
+const {
+  addToQueueBtnEl,
+  modalMovieEl,
+  modalQueueLabelEl,
+  modalWatchedLabelEl,
+  popcornLoaderEl,
+} = getDOMRefs();
 const popcornLoader = new Loader({ el: popcornLoaderEl, className: 'visible' });
 
 const onMovieItemClick = e => {
@@ -23,13 +29,22 @@ const onMovieItemClick = e => {
     .then(details => {
       toggleModal();
 
-      if (isMovieNotInStorage(QUEUE_STORAGE_KEY, movieId)) {
-        addToQueueBtnEl.querySelector('.modal-queue-btn__label').textContent = 'Add to queue';
-      } else {
-        addToQueueBtnEl.querySelector('.modal-queue-btn__label').textContent = 'Remove';
-      }
+      modalQueueLabelEl.textContent = isMovieNotInStorage(
+        QUEUE_STORAGE_KEY,
+        movieId
+      )
+        ? 'Add to queue'
+        : 'Remove  queued';
+
+      modalWatchedLabelEl.textContent = isMovieNotInStorage(
+        WATCHED_STORAGE_KEY,
+        movieId
+      )
+        ? 'Add to watched'
+        : 'Remove  watched';
 
       renderMovieMarkup(modalMovieEl, createMovieDetailsMarkup(details));
+
       window.addEventListener('keydown', handleModal.escKeyDown);
 
       popcornLoader.hide();

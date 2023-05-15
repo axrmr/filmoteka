@@ -21,7 +21,8 @@
     height: 42px;
   }
 
-  .library-btn {
+  &__queue,
+  &__watched {
     height: 100%;
     padding: 1px 24px 0;
     font-weight: 500;
@@ -31,6 +32,7 @@
     border-radius: 100px;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
+
     &.current {
       color: var(--light);
       background-color: var(--dark);
@@ -40,22 +42,24 @@
         background-color: var(--dark);
       }
     }
+  }
 
-    &--watched {
-      margin-right: 6px;
-      background-color: var(--light);
+  &__watched {
+    margin-right: 6px;
+    color: var(--light);
+    background-color: var(--accent);
 
-      &:hover {
-        background-color: var(--light-hover);
-      }
+    &:hover {
+      background-color: var(--light-hover);
     }
-    &--queue {
-      color: var(--light);
-      background-color: var(--accent);
+  }
 
-      &:hover {
-        background-color: var(--accent-hover);
-      }
+  &__queue {
+    color: var(--light);
+    background-color: var(--accent);
+
+    &:hover {
+      background-color: var(--accent-hover);
     }
   }
 }

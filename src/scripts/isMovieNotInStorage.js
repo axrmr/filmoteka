@@ -1,10 +1,13 @@
 import $localStorage from './$localStorage';
 
-const isMovieNotInStorage = (storageKey, movieId = 1) => {
-  const moviesArr = $localStorage.get(storageKey);
-  const isNotInclude = moviesArr.find(movie => movie.id === movieId) === undefined ? true : false;
+const isMovieNotInStorage = (storageKey, movieId) => {
+  if (!movieId) return;
 
-  return !!(moviesArr.length === 0 || isNotInclude);
+  const moviesArr = $localStorage.get(storageKey);
+  const isNotInStor =
+    moviesArr.find(movie => movie.id === movieId) === undefined ? true : false;
+
+  return !!(moviesArr.length === 0 || isNotInStor);
 };
 
 export default isMovieNotInStorage;

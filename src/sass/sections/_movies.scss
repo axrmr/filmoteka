@@ -71,6 +71,12 @@
         white-space: nowrap;
         overflow: hidden;
       }
+      @include mq(desk) {
+        max-width: 190px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
     }
 
     &__year {
@@ -87,7 +93,7 @@
     }
   }
 
-  &__queue {
+  &__lib {
     padding: 0;
   }
 }

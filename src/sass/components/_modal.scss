@@ -34,7 +34,8 @@
   transform: scale(0.9);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.25s linear, visibility 0.25s linear, transform 0.3s linear;
+  transition: opacity 0.25s linear, visibility 0.25s linear,
+    transform 0.3s linear;
 
   &.visible {
     transform: scale(1);
@@ -103,10 +104,9 @@
       @include mq(tab) {
         min-width: 265px;
         max-width: 325px;
-        max-height: 400px;
+        max-height: 40 0px;
       }
       @include mq(desk) {
-        min-width: 320px;
         max-height: 480px;
         margin-top: -15px;
       }
@@ -195,32 +195,34 @@
 
 // Modal buttons
 .modal-btns-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
   @include mq(tab) {
     position: absolute;
-    right: 45px;
+    right: 40px;
     bottom: 30px;
-    display: flex;
-    gap: 5px;
   }
   @include mq(desk) {
     right: 50px;
     bottom: 50px;
   }
 }
-.modal-trailer-btn,
+.modal-watched-btn,
 .modal-queue-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 145px;
-  height: 34px;
 
   font-weight: 500;
   text-transform: uppercase;
   border-radius: 100px;
   border: 1px solid gray;
   cursor: pointer;
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+    border 0.2s ease-in-out;
 
   @include mq(mob-only) {
     width: 100%;
@@ -228,14 +230,13 @@
     text-align: center;
   }
   @include mq(tab) {
-    min-width: 155px;
+    min-width: 145px;
     height: 38px;
   }
   @include mq(desk) {
-    min-width: 175px;
-
-    height: 44px;
-    font-size: 14px;
+    min-width: 155px;
+    height: 42px;
+    font-size: 13px;
   }
 
   &:hover {
@@ -244,27 +245,13 @@
   }
 }
 
-.modal-trailer-btn {
-  color: var(--light);
-  background-color: var(--accent);
-
-  @include mq(mob-only) {
-    margin-bottom: 5px;
-  }
-
-  svg {
-    width: 20px;
-    height: 20px;
-    margin-bottom: 6px;
-    margin-left: 6px;
-    transform: rotateZ(-20deg);
-    fill: currentColor;
-  }
-}
-
 .modal-queue-btn {
   color: var(--accent);
   background-color: transparent;
+
+  @include mq(mob-only) {
+    order: 2;
+  }
 
   svg {
     width: 25px;
@@ -272,5 +259,73 @@
     margin-bottom: 6px;
     margin-left: 13px;
     fill: currentColor;
+  }
+}
+
+.modal-watched-btn {
+  color: var(--light);
+  background-color: var(--accent);
+
+  @include mq(mob-only) {
+    order: 3;
+  }
+
+  svg {
+    width: 25px;
+    height: 25px;
+    margin-bottom: 6px;
+    margin-left: 13px;
+    fill: currentColor;
+  }
+}
+
+.modal-trailer-btn {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 40px;
+  height: 45px;
+  padding: 0;
+
+  color: var(--accent);
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+
+  @include mq(mob-only) {
+    width: 100%;
+    justify-content: center;
+
+    order: 1;
+    text-transform: uppercase;
+    border: 1px solid #00000072;
+    border-radius: 22px;
+  }
+  @include mq(tab) {
+    height: 38px;
+  }
+  @include mq(desk) {
+    height: 42px;
+  }
+
+  &__label {
+    display: none;
+    @include mq(mob-only) {
+      display: inline;
+      width: 35%;
+      margin-left: 40px;
+      font-size: 12px;
+    }
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+
+    @include mq(mob-only) {
+      width: 16%;
+      height: 60%;
+    }
   }
 }

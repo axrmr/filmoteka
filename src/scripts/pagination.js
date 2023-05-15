@@ -32,6 +32,4 @@ pagination.on('beforeMove', function (eventData) {
   });
 });
 
-
-
-export  {pagination};
+export { pagination };

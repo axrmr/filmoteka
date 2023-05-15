@@ -7,7 +7,8 @@ const popcornLoader = new Loader({ el: popcornLoaderEl, className: 'visible' });
 
 const onWatchTrailerBtnClick = () => {
   popcornLoader.show();
-  const movieId = +document.querySelector('[data-modal-movie-inner]').dataset.modalMovieId;
+  const movieId = +document.querySelector('[data-modal-movie-inner]').dataset
+    .modalMovieId;
 
   MoviesService.fetchTrailer(movieId)
     .then(key => {

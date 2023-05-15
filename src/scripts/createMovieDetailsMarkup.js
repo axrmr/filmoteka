@@ -4,8 +4,12 @@ const createMovieDetailsMarkup = detailsArr => {
   const popularity = detailsArr.popularity.toFixed(1);
 
   return `
-      <div class="modal-movie__inner" data-modal-movie-id=${detailsArr.id} data-modal-movie-inner>
-        <img class="modal-movie__img" src=${imgSource} width="400" height="300" alt=${detailsArr.original_title}/>
+      <div class="modal-movie__inner" data-modal-movie-id=${
+        detailsArr.id
+      } data-modal-movie-inner>
+        <img class="modal-movie__img" src=${imgSource} width="400" height="300" alt=${
+    detailsArr.original_title
+  }/>
         <div class="modal-movie__info">
           <h3 class="modal-movie__title">${detailsArr.title}</h3>
           <ul class="modal-movie__info-list info-list">
@@ -19,7 +23,9 @@ const createMovieDetailsMarkup = detailsArr => {
             </li>
             <li class="info-list__item">
               <span class="info-list__title">Original title</span>
-              <span class="info-list__aftertitle">${detailsArr.original_title}</span>
+              <span class="info-list__aftertitle">${
+                detailsArr.original_title
+              }</span>
             </li>
             <li class="info-list__item">
               <span class="info-list__title">Genre </span>
