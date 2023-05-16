@@ -5,7 +5,7 @@ import getDOMRefs from '../getDOMRefs';
 import isMovieNotInStorage from '../isMovieNotInStorage';
 import Loader from '../Loader';
 import renderMovieMarkup from '../renderMovieMarkup';
-import toggleModal from '../toggleModal';
+import modal from '../modal';
 import handleModal from './handleModal';
 
 const { QUEUE_STORAGE_KEY, WATCHED_STORAGE_KEY } = GET_CONSTANTS();
@@ -27,7 +27,7 @@ const onMovieItemClick = e => {
 
   MoviesService.fetchDetails(movieId)
     .then(details => {
-      toggleModal();
+      modal.show();
 
       modalQueueLabelEl.textContent = isMovieNotInStorage(
         QUEUE_STORAGE_KEY,

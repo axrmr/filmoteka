@@ -90,8 +90,13 @@
 
     &__inner {
       @include mq(tab) {
-        display: flex;
-        gap: 30px;
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 20px;
+      }
+      @include mq(desk) {
+        grid-template-columns: 350px 1fr;
+        gap: 20px;
       }
     }
 
@@ -103,10 +108,11 @@
       }
       @include mq(tab) {
         min-width: 265px;
-        max-width: 325px;
-        max-height: 40 0px;
+        max-width: 285px;
+        max-height: 407px;
       }
       @include mq(desk) {
+        max-width: 325px;
         max-height: 480px;
         margin-top: -15px;
       }
@@ -201,11 +207,11 @@
 
   @include mq(tab) {
     position: absolute;
-    right: 40px;
+    right: 18px;
     bottom: 30px;
   }
   @include mq(desk) {
-    right: 50px;
+    right: 45px;
     bottom: 50px;
   }
 }

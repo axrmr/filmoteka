@@ -1,6 +1,6 @@
 import clearTrailerSrc from '../clearTrailerSrc';
 import getDOMRefs from '../getDOMRefs';
-import toggleModal from '../toggleModal';
+import modal from '../modal';
 
 const { modalMovieEl, trailerRootEl, trailerFrameEl } = getDOMRefs();
 
@@ -14,7 +14,7 @@ const clearModalMovieInner = () => {
 const backdropClick = e => {
   if (e.target.hasAttribute('data-backdrop')) {
     clearModalMovieInner();
-    toggleModal();
+    modal.hide();
     removeEventListener('keydown', escKeyDown);
 
     if (trailerRootEl.classList.contains('visible')) {
@@ -26,7 +26,7 @@ const backdropClick = e => {
 
 const closeBtnClick = () => {
   clearModalMovieInner();
-  toggleModal();
+  modal.hide();
   removeEventListener('keydown', escKeyDown);
 };
 
@@ -34,7 +34,7 @@ const escKeyDown = e => {
   if (e.code === 'Escape') {
     clearModalMovieInner();
 
-    toggleModal();
+    modal.hide();
     removeEventListener('keydown', escKeyDown);
   }
 };
