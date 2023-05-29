@@ -1,18 +1,18 @@
-import getDOMRefs from './getDOMRefs';
+import getRefs from './getRefs';
 
-const { modalBackdropEl, modalEl } = getDOMRefs();
+const refs = getRefs();
 
 const show = () => {
-  modalBackdropEl.classList.add('visible');
-  modalEl.classList.add('visible');
+  refs.modalBackdrop.classList.add('visible');
+  refs.modal.classList.add('visible');
   document.body.addEventListener('transitionend', () => {
     document.body.classList.add('no-scroll');
   });
 };
 
 const hide = () => {
-  modalBackdropEl.classList.remove('visible');
-  modalEl.classList.remove('visible');
+  refs.modalBackdrop.classList.remove('visible');
+  refs.modal.classList.remove('visible');
   document.body.addEventListener('transitionend', function hideScrollBar() {
     document.body.classList.remove('no-scroll');
     removeEventListener(this, hideScrollBar);

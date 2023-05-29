@@ -1,24 +1,15 @@
-import GET_CONSTANTS from '../ GET_CONSTANTS';
-import $localStorage from '../$localStorage';
-import MoviesService from '../API/MoviesService';
+import MoviesService from '../../API/MoviesService';
+import $localStorage from '../../helpers/$localStorage';
+import displayElemStyle from '../../helpers/displayElemStyle';
+import hideMobileKeyboardOnReturn from '../../helpers/hideMobileKeyboardOnReturn';
+import notify from '../../helpers/notify';
+import renderMovieMarkup from '../../helpers/renderMovieMarkup';
+import GET_CONSTANTS from '../GET_CONSTANTS';
 import createMovieItemMarkup from '../createMovieItemMarkup';
-import displayElemStyle from '../displayElemStyle';
-import getDOMRefs from '../getDOMRefs';
-import hideMobileKeyboardOnReturn from '../hideMobileKeyboardOnReturn';
-import notify from '../notify';
-import renderMovieMarkup from '../renderMovieMarkup';
+import getRefs from '../getRefs';
 
 const { GENRES_STORAGE_KEY } = GET_CONSTANTS();
-const {
-  homeBtnEl,
-  trendingEl,
-  searchRootEl,
-  errorWrapEl,
-  myLibBtnEl,
-  paginationRootEl,
-  libRootEl,
-  libButtonsRootEl,
-} = getDOMRefs();
+const refs = getRefs();
 
 const onSearchFormSubmit = e => {
   e.preventDefault();
@@ -27,7 +18,7 @@ const onSearchFormSubmit = e => {
   const trimmedSearchQuery = input.value.trim();
 
   if (!trimmedSearchQuery) {
-    notify.fieldCantBeEmpty(errorWrapEl);
+    notify.fieldCantBeEmpty(refs.errorWrap);
     return;
   }
 
@@ -36,21 +27,26 @@ const onSearchFormSubmit = e => {
       const genresArr = $localStorage.get(GENRES_STORAGE_KEY);
 
       if (!dataArr.length) {
-        notify.notFound(errorWrapEl);
+        notify.notFound(refs.errorWrap);
         return;
       }
 
       renderMovieMarkup(
-        searchRootEl,
+        refs.searchRoot,
         createMovieItemMarkup(dataArr, genresArr)
       );
 
-      homeBtnEl.classList.remove('current');
-      myLibBtnEl.classList.remove('current');
-      libButtonsRootEl.classList.remove('visible');
+      refs.homeBtn.classList.remove('current');
+      refs.myLibBtn.classList.remove('current');
+      refs.libButtonsRoot.classList.remove('visible');
 
-      displayElemStyle('none', trendingEl, libRootEl, paginationRootEl);
-      displayElemStyle('grid', searchRootEl);
+      displayElemStyle(
+        'none',
+        refs.trending,
+        refs.libRoot,
+        refs.paginationRoot
+      );
+      displayElemStyle('grid', refs.searchRoot);
 
       hideMobileKeyboardOnReturn(input);
     })

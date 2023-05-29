@@ -1,46 +1,47 @@
-import clearTrailerSrc from '../clearTrailerSrc';
-import getDOMRefs from '../getDOMRefs';
+import clearTrailerSrc from '../../helpers/clearTrailerSrc';
+import getRefs from '../getRefs';
 import modal from '../modal';
 
-const { modalMovieEl, trailerRootEl, trailerFrameEl } = getDOMRefs();
+const refs = getRefs();
 
 const clearModalMovieInner = () => {
-  const id = setTimeout(() => {
-    modalMovieEl.innerHTML = '';
-    clearTimeout(id);
-  }, 300);
+    const id = setTimeout(() => {
+        refs.modalMovie.innerHTML = '';
+        clearTimeout(id);
+    }, 300);
 };
 
 const backdropClick = e => {
-  if (e.target.hasAttribute('data-backdrop')) {
+    if (!e.target.hasAttribute('data-backdrop')) {
+        return;
+    }
     clearModalMovieInner();
     modal.hide();
     removeEventListener('keydown', escKeyDown);
 
-    if (trailerRootEl.classList.contains('visible')) {
-      trailerRootEl.classList.remove('visible');
-      clearTrailerSrc(trailerFrameEl);
+    if (refs.trailerRoot.classList.contains('visible')) {
+        refs.trailerRoot.classList.remove('visible');
+        clearTrailerSrc(refs.trailerFrame);
     }
-  }
 };
 
 const closeBtnClick = () => {
-  clearModalMovieInner();
-  modal.hide();
-  removeEventListener('keydown', escKeyDown);
+    clearModalMovieInner();
+    modal.hide();
+    removeEventListener('keydown', escKeyDown);
 };
 
 const escKeyDown = e => {
-  if (e.code === 'Escape') {
-    clearModalMovieInner();
+    if (e.code === 'Escape') {
+        clearModalMovieInner();
 
-    modal.hide();
-    removeEventListener('keydown', escKeyDown);
-  }
+        modal.hide();
+        removeEventListener('keydown', escKeyDown);
+    }
 };
 
 export default {
-  backdropClick,
-  closeBtnClick,
-  escKeyDown,
+    backdropClick,
+    closeBtnClick,
+    escKeyDown,
 };

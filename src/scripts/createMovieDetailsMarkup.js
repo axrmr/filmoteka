@@ -1,5 +1,5 @@
 const createMovieDetailsMarkup = detailsArr => {
-  const imgSource = `https://image.tmdb.org/t/p/w400/${detailsArr.poster_path}`;
+  const imgSource = `https://image.tmdb.org/t/p/w342/${detailsArr.poster_path}`;
   const votes = detailsArr.vote_average.toString().slice(0, 3);
   const popularity = detailsArr.popularity.toFixed(1);
 

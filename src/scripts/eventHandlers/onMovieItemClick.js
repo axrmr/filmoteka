@@ -1,22 +1,19 @@
-import GET_CONSTANTS from '../ GET_CONSTANTS';
-import MoviesService from '../API/MoviesService';
+import MoviesService from '../../API/MoviesService';
+import Loader from '../../helpers/Loader';
+import renderMovieMarkup from '../../helpers/renderMovieMarkup';
+import GET_CONSTANTS from '../GET_CONSTANTS';
 import createMovieDetailsMarkup from '../createMovieDetailsMarkup';
-import getDOMRefs from '../getDOMRefs';
+import getRefs from '../getRefs';
 import isMovieNotInStorage from '../isMovieNotInStorage';
-import Loader from '../Loader';
-import renderMovieMarkup from '../renderMovieMarkup';
 import modal from '../modal';
 import handleModal from './handleModal';
 
 const { QUEUE_STORAGE_KEY, WATCHED_STORAGE_KEY } = GET_CONSTANTS();
-const {
-  addToQueueBtnEl,
-  modalMovieEl,
-  modalQueueLabelEl,
-  modalWatchedLabelEl,
-  popcornLoaderEl,
-} = getDOMRefs();
-const popcornLoader = new Loader({ el: popcornLoaderEl, className: 'visible' });
+const refs = getRefs();
+const popcornLoader = new Loader({
+  el: refs.popcornLoader,
+  className: 'visible',
+});
 
 const onMovieItemClick = e => {
   if (!e.target.closest('[data-movies-item]')) return;
@@ -29,21 +26,21 @@ const onMovieItemClick = e => {
     .then(details => {
       modal.show();
 
-      modalQueueLabelEl.textContent = isMovieNotInStorage(
+      refs.modalQueueLabel.textContent = isMovieNotInStorage(
         QUEUE_STORAGE_KEY,
         movieId
       )
         ? 'Add to queue'
         : 'Remove  queued';
 
-      modalWatchedLabelEl.textContent = isMovieNotInStorage(
+      refs.modalWatchedLabel.textContent = isMovieNotInStorage(
         WATCHED_STORAGE_KEY,
         movieId
       )
         ? 'Add to watched'
         : 'Remove  watched';
 
-      renderMovieMarkup(modalMovieEl, createMovieDetailsMarkup(details));
+      renderMovieMarkup(refs.modalMovie, createMovieDetailsMarkup(details));
 
       window.addEventListener('keydown', handleModal.escKeyDown);
 

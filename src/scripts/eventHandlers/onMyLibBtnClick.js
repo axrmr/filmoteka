@@ -1,37 +1,27 @@
-import GET_CONSTANTS from '../ GET_CONSTANTS';
-import $localStorage from '../$localStorage';
+import $localStorage from '../../helpers/$localStorage';
+import displayElemStyle from '../../helpers/displayElemStyle';
+import renderMovieMarkup from '../../helpers/renderMovieMarkup';
+import GET_CONSTANTS from '../GET_CONSTANTS';
 import createMovieItemMarkup from '../createMovieItemMarkup';
-import displayElemStyle from '../displayElemStyle';
-import getDOMRefs from '../getDOMRefs';
-import renderMovieMarkup from '../renderMovieMarkup';
+import getRefs from '../getRefs';
 
 const { QUEUE_STORAGE_KEY } = GET_CONSTANTS();
-const {
-  libButtonsRootEl,
-  homeBtnEl,
-  myLibBtnEl,
-  trendingEl,
-  paginationRootEl,
-  searchRootEl,
-  libRootEl,
-  libQueueBtnEl,
-  libWatchedBtnEl,
-} = getDOMRefs();
+const refs = getRefs();
 
 const onMyLibBtnClick = () => {
   const queueMovieArr = $localStorage.get(QUEUE_STORAGE_KEY);
 
-  libQueueBtnEl.classList.add('current');
-  libWatchedBtnEl.classList.remove('current');
+  refs.libQueueBtn.classList.add('current');
+  refs.libWatchedBtn.classList.remove('current');
 
-  displayElemStyle('grid', libRootEl);
-  displayElemStyle('none', trendingEl, paginationRootEl, searchRootEl);
+  displayElemStyle('grid', refs.libRoot);
+  displayElemStyle('none', refs.trending, refs.paginationRoot, refs.searchRoot);
 
-  libButtonsRootEl.classList.add('visible');
-  homeBtnEl.classList.remove('current');
-  myLibBtnEl.classList.add('current');
+  refs.libButtonsRoot.classList.add('visible');
+  refs.homeBtn.classList.remove('current');
+  refs.myLibBtn.classList.add('current');
 
-  renderMovieMarkup(libRootEl, createMovieItemMarkup(queueMovieArr));
+  renderMovieMarkup(refs.libRoot, createMovieItemMarkup(queueMovieArr));
 };
 
 export default onMyLibBtnClick;

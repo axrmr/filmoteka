@@ -1,24 +1,23 @@
-import GET_CONSTANTS from '../ GET_CONSTANTS';
-import $localStorage from '../$localStorage';
+import $localStorage from '../../helpers/$localStorage';
+import displayElemStyle from '../../helpers/displayElemStyle';
+import renderMovieMarkup from '../../helpers/renderMovieMarkup';
+import GET_CONSTANTS from '../GET_CONSTANTS';
 import createMovieItemMarkup from '../createMovieItemMarkup';
-import displayElemStyle from '../displayElemStyle';
-import getDOMRefs from '../getDOMRefs';
-import renderMovieMarkup from '../renderMovieMarkup';
+import getRefs from '../getRefs';
 
 const { WATCHED_STORAGE_KEY } = GET_CONSTANTS();
-const { libRootEl, libQueueBtnEl, libWatchedBtnEl, searchRootEl } =
-  getDOMRefs();
+const refs = getRefs();
 
 const onLibWatchedBtnClick = () => {
   const watchedMovieArr = $localStorage.get(WATCHED_STORAGE_KEY);
 
-  libWatchedBtnEl.classList.add('current');
-  libQueueBtnEl.classList.remove('current');
+  refs.libWatchedBtn.classList.add('current');
+  refs.libQueueBtn.classList.remove('current');
 
-  displayElemStyle('none', searchRootEl);
-  displayElemStyle('grid', libRootEl);
+  displayElemStyle('none', refs.searchRoot);
+  displayElemStyle('grid', refs.libRoot);
 
-  renderMovieMarkup(libRootEl, createMovieItemMarkup(watchedMovieArr));
+  renderMovieMarkup(refs.libRoot, createMovieItemMarkup(watchedMovieArr));
 };
 
 export default onLibWatchedBtnClick;

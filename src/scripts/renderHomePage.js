@@ -1,16 +1,16 @@
-import GET_CONSTANTS from './ GET_CONSTANTS';
-import $localStorage from './$localStorage';
+import $localStorage from '../helpers/$localStorage';
+import renderMovieMarkup from '../helpers/renderMovieMarkup';
+import GET_CONSTANTS from './GET_CONSTANTS';
 import createMovieItemMarkup from './createMovieItemMarkup';
-import getDOMRefs from './getDOMRefs';
-import renderMovieMarkup from './renderMovieMarkup';
+import getRefs from './getRefs';
 
 const { HOME_PAGE_MOVIES } = GET_CONSTANTS();
-const { trendingEl } = getDOMRefs();
+const refs = getRefs();
 
 const renderHomePage = () => {
-  const homePageMovies = $localStorage.get(HOME_PAGE_MOVIES);
-  renderMovieMarkup(trendingEl, createMovieItemMarkup(homePageMovies));
-  document.getElementById('tui-pagination-container').style.display = 'block';
+    const homePageMovies = $localStorage.get(HOME_PAGE_MOVIES);
+    renderMovieMarkup(refs.trending, createMovieItemMarkup(homePageMovies));
+    document.getElementById('tui-pagination-container').style.display = 'block';
 };
 
 export default renderHomePage;

@@ -1,54 +1,65 @@
-import GET_CONSTANTS from '../ GET_CONSTANTS';
-import $localStorage from '../$localStorage';
-import MoviesService from '../API/MoviesService';
-import Loader from '../Loader';
+import MoviesService from '../../API/MoviesService';
+import $localStorage from '../../helpers/$localStorage';
+import Loader from '../../helpers/Loader';
+import displayElemStyle from '../../helpers/displayElemStyle';
+import renderMovieMarkup from '../../helpers/renderMovieMarkup';
+
+import GET_CONSTANTS from '../GET_CONSTANTS';
 import createMovieItemMarkup from '../createMovieItemMarkup';
-import displayElemStyle from '../displayElemStyle';
-import getDOMRefs from '../getDOMRefs';
-import renderMovieMarkup from '../renderMovieMarkup';
+import getRefs from '../getRefs';
 
 const {
-  GENRES_STORAGE_KEY,
-  CURRENT_PAGE_MOVIES_STORAGE_KEY,
-  QUEUE_STORAGE_KEY,
-  WATCHED_STORAGE_KEY,
-  HOME_PAGE_MOVIES,
+    GENRES_STORAGE_KEY,
+    CURRENT_PAGE_MOVIES_STORAGE_KEY,
+    QUEUE_STORAGE_KEY,
+    WATCHED_STORAGE_KEY,
+    HOME_PAGE_MOVIES,
 } = GET_CONSTANTS();
-const { trendingEl, modalBackdropEl, popcornLoaderEl, homeBtnEl } =
-  getDOMRefs();
-const popcornLoader = new Loader({ el: popcornLoaderEl, className: 'visible' });
+const refs = getRefs();
+const popcornLoader = new Loader({ el: refs.popcornLoader, className: 'visible' });
 
-function onDOMContentLoaded() {
-  if (
-    $localStorage.get(WATCHED_STORAGE_KEY) === undefined ||
-    $localStorage.get(QUEUE_STORAGE_KEY) === undefined
-  ) {
-    $localStorage.save(WATCHED_STORAGE_KEY, []);
-    $localStorage.save(QUEUE_STORAGE_KEY, []);
-  }
+async function onDOMContentLoaded() {
+    if (
+        $localStorage.get(WATCHED_STORAGE_KEY) === undefined ||
+        $localStorage.get(QUEUE_STORAGE_KEY) === undefined
+    ) {
+        $localStorage.save(WATCHED_STORAGE_KEY, []);
+        $localStorage.save(QUEUE_STORAGE_KEY, []);
+    }
 
-  popcornLoader.show();
+    displayElemStyle('flex', refs.modalBackdrop);
+    refs.homeBtn.classList.toggle('current');
+    popcornLoader.show();
 
-  displayElemStyle('flex', modalBackdropEl);
+    try {
+        const genresArr = await MoviesService.fetchGenres();
+        $localStorage.save(GENRES_STORAGE_KEY, genresArr);
+    } catch (error) {
+        $localStorage.save(GENRES_STORAGE_KEY, []);
+        console.log(error.message);
+    }
 
-  homeBtnEl.classList.toggle('current');
+    try {
+        const trendingArr = await MoviesService.fetchTrending();
+        $localStorage.save(CURRENT_PAGE_MOVIES_STORAGE_KEY, trendingArr);
+        $localStorage.save(HOME_PAGE_MOVIES, trendingArr);
 
-  MoviesService.fetchGenres()
-    .then(genresArr => {
-      $localStorage.save(GENRES_STORAGE_KEY, genresArr);
-    })
-    .catch(console.error);
+        renderMovieMarkup(refs.trending, createMovieItemMarkup(trendingArr));
+    } catch (error) {
+        console.error(error.message);
+    }
 
-  MoviesService.fetchTrending()
-    .then(trendingDataArr => {
-      $localStorage.save(CURRENT_PAGE_MOVIES_STORAGE_KEY, trendingDataArr);
-      $localStorage.save(HOME_PAGE_MOVIES, trendingDataArr);
-
-      renderMovieMarkup(trendingEl, createMovieItemMarkup(trendingDataArr));
-
-      popcornLoader.hide();
-    })
-    .catch(console.error);
+    // try {
+    //     const response = await MoviesService.fetchTopRated();
+    //     const slideRoot = document.createElement('ul');
+    //     slideRoot.classList.add('glide__slides');
+    //     slideRoot.innerHTML = createMovieItemMarkup(response.results);
+    //     console.log(slideRoot);
+    //     document.querySelector('.glide__track').append(slideRoot);
+    // } catch (error) {
+    //     console.log(error.message);
+    // }
+    popcornLoader.hide();
 }
 
 export default onDOMContentLoaded;

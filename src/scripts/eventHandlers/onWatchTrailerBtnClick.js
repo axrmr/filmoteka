@@ -1,9 +1,12 @@
-import MoviesService from '../API/MoviesService';
-import getDOMRefs from '../getDOMRefs';
-import Loader from '../Loader';
+import MoviesService from '../../API/MoviesService';
+import Loader from '../../helpers/Loader';
+import getRefs from '../getRefs';
 
-const { trailerFrameEl, trailerRootEl, popcornLoaderEl } = getDOMRefs();
-const popcornLoader = new Loader({ el: popcornLoaderEl, className: 'visible' });
+const refs = getRefs();
+const popcornLoader = new Loader({
+  el: refs.popcornLoader,
+  className: 'visible',
+});
 
 const onWatchTrailerBtnClick = () => {
   popcornLoader.show();
@@ -14,8 +17,8 @@ const onWatchTrailerBtnClick = () => {
     .then(key => {
       if (!key) return;
 
-      trailerFrameEl.src = `http://www.youtube.com/embed/${key}/`;
-      trailerRootEl.classList.add('visible');
+      refs.trailerFrame.src = `http://www.youtube.com/embed/${key}/`;
+      refs.trailerRoot.classList.add('visible');
 
       popcornLoader.hide();
     })

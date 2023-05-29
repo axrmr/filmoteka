@@ -1,24 +1,23 @@
-import displayElemStyle from '../displayElemStyle';
-import getDOMRefs from '../getDOMRefs';
+import displayElemStyle from '../../helpers/displayElemStyle';
+import getRefs from '../getRefs';
 import { pagination } from '../pagination';
 import renderHomePage from '../renderHomePage';
 
-const { libButtonsRootEl, myLibBtnEl, homeBtnEl, trendingEl, libRootEl } =
-  getDOMRefs();
+const refs = getRefs();
 
 const onHomeBtnClick = e => {
-  e.preventDefault();
+    e.preventDefault();
 
-  pagination.reset();
+    pagination.reset();
 
-  libButtonsRootEl.classList.remove('visible');
-  myLibBtnEl.classList.remove('current');
-  homeBtnEl.classList.add('current');
+    refs.libButtonsRoot.classList.remove('visible');
+    refs.myLibBtn.classList.remove('current');
+    refs.homeBtn.classList.add('current');
 
-  displayElemStyle('none', libRootEl);
-  displayElemStyle('grid', trendingEl);
+    displayElemStyle('none', refs.libRoot);
+    displayElemStyle('grid', refs.trending);
 
-  renderHomePage();
+    renderHomePage();
 };
 
 export default onHomeBtnClick;

@@ -1,35 +1,34 @@
 import Pagination from 'tui-pagination';
-import GET_CONSTANTS from './ GET_CONSTANTS';
-import $localStorage from './$localStorage';
-import MoviesService from './API/MoviesService';
-import Loader from './Loader';
+import MoviesService from '../API/MoviesService';
+import $localStorage from '../helpers/$localStorage';
+import Loader from '../helpers/Loader';
+import renderMovieMarkup from '../helpers/renderMovieMarkup';
+import GET_CONSTANTS from './GET_CONSTANTS';
 import createMovieItemMarkup from './createMovieItemMarkup';
-import getDOMRefs from './getDOMRefs';
-import renderMovieMarkup from './renderMovieMarkup';
+import getRefs from './getRefs';
 
 const { CURRENT_PAGE_MOVIES_STORAGE_KEY } = GET_CONSTANTS();
-const { trendingEl, paginationRootEl, popcornLoaderEl } = getDOMRefs();
-const popcornLoader = new Loader({ el: popcornLoaderEl, className: 'visible' });
+const refs = getRefs();
+const popcornLoader = new Loader({ el: refs.popcornLoader, className: 'visible' });
 
-let visiblePagesCount = 4;
+const visiblePagesCount = document.body.clientWidth > 767 ? 10 : 4;
 
-if (document.body.clientWidth > 767) {
-  visiblePagesCount = 10;
-}
-
-const pagination = new Pagination(paginationRootEl, {
-  totalItems: 10000,
-  visiblePages: visiblePagesCount,
+const pagination = new Pagination(refs.paginationRoot, {
+    totalItems: 10_000,
+    visiblePages: visiblePagesCount,
 });
 
-pagination.on('beforeMove', function (eventData) {
-  popcornLoader.show();
-
-  MoviesService.fetchTrending(eventData.page).then(trendingDataArr => {
-    $localStorage.save(CURRENT_PAGE_MOVIES_STORAGE_KEY, trendingDataArr);
-    renderMovieMarkup(trendingEl, createMovieItemMarkup(trendingDataArr));
-    popcornLoader.hide();
-  });
+pagination.on('beforeMove', async eventData => {
+    popcornLoader.show();
+    try {
+        const trendingArr = await MoviesService.fetchTrending(eventData.page);
+        $localStorage.save(CURRENT_PAGE_MOVIES_STORAGE_KEY, trendingArr);
+        renderMovieMarkup(refs.trending, createMovieItemMarkup(trendingArr));
+    } catch (error) {
+        console.error(error);
+    } finally {
+        popcornLoader.hide();
+    }
 });
 
 export { pagination };
