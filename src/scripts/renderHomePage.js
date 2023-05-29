@@ -8,9 +8,9 @@ const { HOME_PAGE_MOVIES } = GET_CONSTANTS();
 const refs = getRefs();
 
 const renderHomePage = () => {
-    const homePageMovies = $localStorage.get(HOME_PAGE_MOVIES);
-    renderMovieMarkup(refs.trending, createMovieItemMarkup(homePageMovies));
-    document.getElementById('tui-pagination-container').style.display = 'block';
+  const homePageMovies = $localStorage.get(HOME_PAGE_MOVIES);
+  renderMovieMarkup(refs.trending, createMovieItemMarkup(homePageMovies));
+  document.getElementById('tui-pagination-container').style.display = 'block';
 };
 
 export default renderHomePage;

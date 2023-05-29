@@ -9,57 +9,55 @@ import createMovieItemMarkup from '../createMovieItemMarkup';
 import getRefs from '../getRefs';
 
 const {
-    GENRES_STORAGE_KEY,
-    CURRENT_PAGE_MOVIES_STORAGE_KEY,
-    QUEUE_STORAGE_KEY,
-    WATCHED_STORAGE_KEY,
-    HOME_PAGE_MOVIES,
+  GENRES_STORAGE_KEY,
+  CURRENT_PAGE_MOVIES_STORAGE_KEY,
+  QUEUE_STORAGE_KEY,
+  WATCHED_STORAGE_KEY,
+  HOME_PAGE_MOVIES,
 } = GET_CONSTANTS();
 const refs = getRefs();
-const popcornLoader = new Loader({ el: refs.popcornLoader, className: 'visible' });
+const popcornLoader = new Loader({
+  el: refs.popcornLoader,
+  className: 'visible',
+});
 
 async function onDOMContentLoaded() {
-    if (
-        $localStorage.get(WATCHED_STORAGE_KEY) === undefined ||
-        $localStorage.get(QUEUE_STORAGE_KEY) === undefined
-    ) {
-        $localStorage.save(WATCHED_STORAGE_KEY, []);
-        $localStorage.save(QUEUE_STORAGE_KEY, []);
-    }
+  const genres = [];
 
-    displayElemStyle('flex', refs.modalBackdrop);
-    refs.homeBtn.classList.toggle('current');
-    popcornLoader.show();
+  if (
+    $localStorage.get(WATCHED_STORAGE_KEY) === undefined ||
+    $localStorage.get(QUEUE_STORAGE_KEY) === undefined
+  ) {
+    $localStorage.save(WATCHED_STORAGE_KEY, []);
+    $localStorage.save(QUEUE_STORAGE_KEY, []);
+  }
 
-    try {
-        const genresArr = await MoviesService.fetchGenres();
-        $localStorage.save(GENRES_STORAGE_KEY, genresArr);
-    } catch (error) {
-        $localStorage.save(GENRES_STORAGE_KEY, []);
-        console.log(error.message);
-    }
+  displayElemStyle('flex', refs.modalBackdrop);
+  refs.homeBtn.classList.toggle('current');
+  popcornLoader.show();
 
-    try {
-        const trendingArr = await MoviesService.fetchTrending();
-        $localStorage.save(CURRENT_PAGE_MOVIES_STORAGE_KEY, trendingArr);
-        $localStorage.save(HOME_PAGE_MOVIES, trendingArr);
+  try {
+    genres.push(await MoviesService.fetchGenres());
+    $localStorage.save(GENRES_STORAGE_KEY, genres);
+  } catch (error) {
+    $localStorage.save(GENRES_STORAGE_KEY, []);
+    console.log(error.message);
+  }
 
-        renderMovieMarkup(refs.trending, createMovieItemMarkup(trendingArr));
-    } catch (error) {
-        console.error(error.message);
-    }
+  try {
+    const trendingArr = await MoviesService.fetchTrending();
+    $localStorage.save(CURRENT_PAGE_MOVIES_STORAGE_KEY, trendingArr);
+    $localStorage.save(HOME_PAGE_MOVIES, trendingArr);
 
-    // try {
-    //     const response = await MoviesService.fetchTopRated();
-    //     const slideRoot = document.createElement('ul');
-    //     slideRoot.classList.add('glide__slides');
-    //     slideRoot.innerHTML = createMovieItemMarkup(response.results);
-    //     console.log(slideRoot);
-    //     document.querySelector('.glide__track').append(slideRoot);
-    // } catch (error) {
-    //     console.log(error.message);
-    // }
-    popcornLoader.hide();
+    renderMovieMarkup(
+      refs.trending,
+      createMovieItemMarkup(trendingArr, genres)
+    );
+  } catch (error) {
+    console.error(error.message);
+  }
+
+  popcornLoader.hide();
 }
 
 export default onDOMContentLoaded;
