@@ -2,22 +2,19 @@
   display: none;
   height: 34px;
 
-  &.visible {
-    display: block;
-  }
+  // &.visible {
+  //   display: flex;
+  // }
 
   @include mq(mob-only) {
     margin-top: 10px;
   }
+
   @include mq(tab) {
-    position: absolute;
-    top: -297%;
-    right: -20px;
     height: 38px;
   }
+
   @include mq(desk) {
-    top: -281%;
-    right: -30px;
     height: 42px;
   }
 

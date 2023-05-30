@@ -4,8 +4,8 @@ import $localStorage from '../helpers/$localStorage';
 import Loader from '../helpers/Loader';
 import renderMovieMarkup from '../helpers/renderMovieMarkup';
 import GET_CONSTANTS from './GET_CONSTANTS';
-import createMovieItemMarkup from './createMovieItemMarkup';
 import getRefs from './getRefs';
+import createPopularMarkup from './markup/createPopularMarkup';
 
 const { CURRENT_PAGE_MOVIES_STORAGE_KEY } = GET_CONSTANTS();
 const refs = getRefs();
@@ -22,11 +22,11 @@ const pagination = new Pagination(refs.paginationRoot, {
 });
 
 pagination.on('beforeMove', async eventData => {
-  popcornLoader.show();
   try {
-    const trendingArr = await MoviesService.fetchTrending(eventData.page);
-    $localStorage.save(CURRENT_PAGE_MOVIES_STORAGE_KEY, trendingArr);
-    renderMovieMarkup(refs.trending, createMovieItemMarkup(trendingArr));
+    popcornLoader.show();
+    const popularArr = await MoviesService.fetchPopular(eventData.page + 1);
+    $localStorage.save(CURRENT_PAGE_MOVIES_STORAGE_KEY, popularArr);
+    renderMovieMarkup(refs.popularRoot, createPopularMarkup(popularArr));
   } catch (error) {
     console.error(error);
   } finally {

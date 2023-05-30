@@ -1,14 +1,12 @@
 import MoviesService from '../../API/MoviesService';
-import $localStorage from '../../helpers/$localStorage';
-import displayElemStyle from '../../helpers/displayElemStyle';
+import hideElement from '../../helpers/hideElement';
 import hideMobileKeyboardOnReturn from '../../helpers/hideMobileKeyboardOnReturn';
 import notify from '../../helpers/notify';
 import renderMovieMarkup from '../../helpers/renderMovieMarkup';
-import GET_CONSTANTS from '../GET_CONSTANTS';
-import createMovieItemMarkup from '../createMovieItemMarkup';
+import showElement from '../../helpers/showElement';
 import getRefs from '../getRefs';
+import createPopularMarkup from '../markup/createPopularMarkup';
 
-const { GENRES_STORAGE_KEY } = GET_CONSTANTS();
 const refs = getRefs();
 
 const onSearchFormSubmit = e => {
@@ -24,30 +22,26 @@ const onSearchFormSubmit = e => {
 
   MoviesService.searchMovie(trimmedSearchQuery)
     .then(dataArr => {
-      const genresArr = $localStorage.get(GENRES_STORAGE_KEY);
-
       if (!dataArr.length) {
         notify.notFound(refs.errorWrap);
         return;
       }
 
-      renderMovieMarkup(
-        refs.searchRoot,
-        createMovieItemMarkup(dataArr, genresArr)
-      );
+      renderMovieMarkup(refs.searchRoot, createPopularMarkup(dataArr));
 
       refs.homeBtn.classList.remove('current');
       refs.myLibBtn.classList.remove('current');
       refs.libButtonsRoot.classList.remove('visible');
 
-      displayElemStyle(
-        'none',
-        refs.trending,
+      hideElement(
+        refs.popularSection,
+        refs.trendingSection,
         refs.libRoot,
-        refs.paginationRoot
+        refs.paginationRoot,
+        refs.libSection
       );
-      displayElemStyle('grid', refs.searchRoot);
 
+      showElement(refs.searchSection);
       hideMobileKeyboardOnReturn(input);
     })
     .catch(console.error);

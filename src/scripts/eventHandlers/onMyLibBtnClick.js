@@ -1,9 +1,10 @@
 import $localStorage from '../../helpers/$localStorage';
-import displayElemStyle from '../../helpers/displayElemStyle';
+import hideElement from '../../helpers/hideElement';
 import renderMovieMarkup from '../../helpers/renderMovieMarkup';
+import showElement from '../../helpers/showElement';
 import GET_CONSTANTS from '../GET_CONSTANTS';
-import createMovieItemMarkup from '../createMovieItemMarkup';
 import getRefs from '../getRefs';
+import createPopularMarkup from '../markup/createPopularMarkup';
 
 const { QUEUE_STORAGE_KEY } = GET_CONSTANTS();
 const refs = getRefs();
@@ -14,14 +15,19 @@ const onMyLibBtnClick = () => {
   refs.libQueueBtn.classList.add('current');
   refs.libWatchedBtn.classList.remove('current');
 
-  displayElemStyle('grid', refs.libRoot);
-  displayElemStyle('none', refs.trending, refs.paginationRoot, refs.searchRoot);
+  showElement(refs.libRoot, refs.libSection);
+  hideElement(
+    refs.searchSection,
+    refs.popularSection,
+    refs.trendingSection,
+    refs.paginationRoot
+  );
 
+  refs.myLibBtn.classList.add('current');
   refs.libButtonsRoot.classList.add('visible');
   refs.homeBtn.classList.remove('current');
-  refs.myLibBtn.classList.add('current');
 
-  renderMovieMarkup(refs.libRoot, createMovieItemMarkup(queueMovieArr));
+  renderMovieMarkup(refs.libRoot, createPopularMarkup(queueMovieArr));
 };
 
 export default onMyLibBtnClick;

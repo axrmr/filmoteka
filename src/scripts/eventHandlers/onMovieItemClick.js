@@ -2,9 +2,9 @@ import MoviesService from '../../API/MoviesService';
 import Loader from '../../helpers/Loader';
 import renderMovieMarkup from '../../helpers/renderMovieMarkup';
 import GET_CONSTANTS from '../GET_CONSTANTS';
-import createMovieDetailsMarkup from '../createMovieDetailsMarkup';
 import getRefs from '../getRefs';
 import isMovieNotInStorage from '../isMovieNotInStorage';
+import createMovieDetailsMarkup from '../markup/createMovieDetailsMarkup';
 import modal from '../modal';
 import handleModal from './handleModal';
 
@@ -21,11 +21,9 @@ const onMovieItemClick = e => {
   const movieId = +e.target.closest('[data-movie-id]').dataset.movieId;
 
   popcornLoader.show();
-
   MoviesService.fetchDetails(movieId)
     .then(details => {
       modal.show();
-
       refs.modalQueueLabel.textContent = isMovieNotInStorage(
         QUEUE_STORAGE_KEY,
         movieId
@@ -41,12 +39,10 @@ const onMovieItemClick = e => {
         : 'Remove  watched';
 
       renderMovieMarkup(refs.modalMovie, createMovieDetailsMarkup(details));
-
       window.addEventListener('keydown', handleModal.escKeyDown);
-
-      popcornLoader.hide();
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => popcornLoader.hide());
 };
 
 export default onMovieItemClick;

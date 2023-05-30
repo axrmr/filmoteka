@@ -1,4 +1,5 @@
 import $localStorage from '../helpers/$localStorage';
+
 const removeMovieFromStorage = (key, id) => {
   const arr = $localStorage.get(key);
 

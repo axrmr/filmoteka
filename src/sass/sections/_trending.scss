@@ -1,0 +1,10 @@
+.trending {
+  &__item,
+  &__img {
+    border-radius: 5px;
+  }
+
+  &__img {
+    margin-bottom: 10px;
+  }
+}

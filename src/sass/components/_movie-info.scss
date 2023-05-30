@@ -1,0 +1,60 @@
+.movie-info {
+  width: 280px;
+  padding-right: 2px;
+  color: var(--accent);
+
+  @include mq(tab) {
+    width: 232px;
+    font-size: 14px;
+    font-weight: normal;
+  }
+
+  &__title {
+    width: 100%;
+    margin-bottom: 5px;
+    text-overflow: ellipsis;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-transform: uppercase;
+    color: var(--dark);
+
+    @include mq(tab) {
+      font-size: 14px;
+    }
+
+    @include mq(desk) {
+      width: 225px;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__genres {
+    display: inline-block;
+    width: 70%;
+    vertical-align: bottom;
+
+    @include mq(tab) {
+      width: 60%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    @include mq(desk) {
+    }
+  }
+
+  &__year {
+    padding: 0 5px;
+  }
+
+  &__rating {
+    display: inline-block;
+    margin-left: auto;
+    padding: 2px 8px 0;
+    color: var(--light);
+    background-color: var(--accent);
+    border-radius: 4px;
+  }
+}

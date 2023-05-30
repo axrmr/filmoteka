@@ -1,0 +1,17 @@
+.popular {
+  &__root {
+  }
+
+  &__item {
+    cursor: pointer;
+
+    @include mq(mob-only) {
+      margin-bottom: 20px;
+    }
+  }
+  &__img {
+    max-height: 390px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+}

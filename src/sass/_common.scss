@@ -1,42 +1,5 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-  font-weight: inherit;
-  font-size: inherit;
-}
-
-p {
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-html,
-body {
-  height: 100%;
-}
-
 body {
   height: 100%;
   font-family: var(--ff-main);
@@ -64,24 +27,31 @@ main {
   flex: 1 1 auto;
 }
 
-/* width */
-::-webkit-scrollbar {
-  position: fixed;
-  height: 100%;
-  width: 6px;
+.section {
+  padding: 30px 0 50px;
+
+  &.popular {
+    margin-bottom: 70px;
+  }
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
+.search__root,
+.popular__root,
+.library-root {
+  @include mq(tab) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    grid-column-gap: 15px;
+    grid-row-gap: 30px;
+  }
 }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #bd3e3e;
+.trending__title,
+.popular__title,
+.search__title {
+  margin-bottom: 20px;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+.hidden {
+  display: none;
 }

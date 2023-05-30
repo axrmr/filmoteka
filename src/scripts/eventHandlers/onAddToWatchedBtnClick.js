@@ -1,9 +1,9 @@
 import $localStorage from '../../helpers/$localStorage';
 import renderMovieMarkup from '../../helpers/renderMovieMarkup';
 import GET_CONSTANTS from '../GET_CONSTANTS';
-import createMovieItemMarkup from '../createMovieItemMarkup';
 import getRefs from '../getRefs';
 import isMovieNotInStorage from '../isMovieNotInStorage';
+import createPopularMarkup from '../markup/createPopularMarkup';
 import removeMovieFromStorage from '../removeMovieFromStorage';
 import saveMovieToStorage from '../saveMovieToStorage';
 
@@ -27,7 +27,7 @@ const onAddToWatchedBtnClick = () => {
   watchedBtnLabel.textContent = 'Add to watched';
 
   const watchedMovieArr = $localStorage.get(WATCHED_STORAGE_KEY);
-  renderMovieMarkup(refs.libRoot, createMovieItemMarkup(watchedMovieArr));
+  renderMovieMarkup(refs.libRoot, createPopularMarkup(watchedMovieArr));
 };
 
 export default onAddToWatchedBtnClick;

@@ -7,9 +7,10 @@ const createMovieDetailsMarkup = detailsArr => {
       <div class="modal-movie__inner" data-modal-movie-id=${
         detailsArr.id
       } data-modal-movie-inner>
-        <img class="modal-movie__img" src=${imgSource} width="400" height="300" alt=${
-    detailsArr.original_title
-  }/>
+        <img class="modal-movie__img" 
+             src=${imgSource} width="400" height="300" 
+             alt=${detailsArr.original_title}
+        />
         <div class="modal-movie__info">
           <h3 class="modal-movie__title">${detailsArr.title}</h3>
           <ul class="modal-movie__info-list info-list">

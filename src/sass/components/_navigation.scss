@@ -1,8 +1,7 @@
 .nav {
-  margin-bottom: 10px;
-
-  @include mq(tab) {
-    order: 2;
+  @include mq(mob-only) {
+    order: 1;
+    margin-bottom: 10px;
   }
 
   &__list {
@@ -17,9 +16,11 @@
     @include mq(tab) {
       height: 38px;
     }
+
     @include mq(desk) {
       height: 42px;
     }
+
     &:not(:last-child) {
       margin-right: 5px;
     }

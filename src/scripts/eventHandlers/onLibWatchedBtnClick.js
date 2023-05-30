@@ -1,9 +1,10 @@
 import $localStorage from '../../helpers/$localStorage';
-import displayElemStyle from '../../helpers/displayElemStyle';
+import hideElement from '../../helpers/hideElement';
 import renderMovieMarkup from '../../helpers/renderMovieMarkup';
+import showElement from '../../helpers/showElement';
 import GET_CONSTANTS from '../GET_CONSTANTS';
-import createMovieItemMarkup from '../createMovieItemMarkup';
 import getRefs from '../getRefs';
+import createPopularMarkup from '../markup/createPopularMarkup';
 
 const { WATCHED_STORAGE_KEY } = GET_CONSTANTS();
 const refs = getRefs();
@@ -14,10 +15,9 @@ const onLibWatchedBtnClick = () => {
   refs.libWatchedBtn.classList.add('current');
   refs.libQueueBtn.classList.remove('current');
 
-  displayElemStyle('none', refs.searchRoot);
-  displayElemStyle('grid', refs.libRoot);
-
-  renderMovieMarkup(refs.libRoot, createMovieItemMarkup(watchedMovieArr));
+  hideElement(refs.searchRoot);
+  showElement(refs.libRoot);
+  renderMovieMarkup(refs.libRoot, createPopularMarkup(watchedMovieArr));
 };
 
 export default onLibWatchedBtnClick;

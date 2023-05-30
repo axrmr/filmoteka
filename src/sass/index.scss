@@ -1,20 +1,28 @@
 @import 'vars';
 @import 'mixins/media-queries';
 
+@import 'reset';
 @import 'common';
 @import 'container';
+@import 'scrollbar';
 
 @import 'components/logo';
+@import 'components/title';
 @import 'components/search-form';
 @import 'components/navigation';
 @import 'components/modal';
-@import 'components/library';
+@import 'components/library-btns';
 @import 'components/iframe-trailer';
 @import 'components/popcorn-loader';
+@import 'components/movie-info';
 
 @import 'sections/header';
-@import 'sections/movies';
+@import 'sections/hero';
+@import 'sections/trending';
+@import 'sections/search';
+@import 'sections/library';
+@import 'sections/popular';
 @import 'sections/footer';
 
 @import 'vendors/pagination';
-@import 'vendors/glide-slider';
+@import 'vendors/trending-slider';

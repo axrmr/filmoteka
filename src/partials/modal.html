@@ -1,0 +1,37 @@
+<div class="modal" data-modal>
+  <button class="modal__close-btn" data-close-modal>
+    <svg class="close-icon">
+      <use href="./images/sprite.svg#close"></use>
+    </svg>
+  </button>
+
+  <!-- Modal content -->
+  <div class="modal__content" data-modal-content>
+    <!-- Modal movie-->
+    <div class="modal-movie" data-modal-movie></div>
+    <!-- Modal buttons -->
+    <div class="modal-btns-wrap">
+      <button class="modal-queue-btn" data-add-to-queue>
+        <span class="modal-queue-btn__label" data-modal-queue-label>
+          Add to queue
+        </span>
+      </button>
+      <button class="modal-watched-btn" data-add-to-watched>
+        <span class="modal-watched-btn__label" data-modal-watched-label>
+          Add to watched
+        </span>
+      </button>
+      <button
+        class="modal-trailer-btn"
+        data-watch-trailer
+        title="Watch trailer "
+      >
+        <span class="modal-trailer-btn__label">Watch trailer</span>
+        <svg>
+          <use href="./images/sprite.svg#play"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <!-- modal content end -->
+</div>

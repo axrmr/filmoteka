@@ -1,20 +1,23 @@
-// Search form
 .search-form {
   --input-h: 34px;
   height: var(--input-h);
   position: relative;
   width: 250px;
 
+  @include mq(mob-only) {
+    order: 2;
+  }
+
   @include mq(tab) {
     --input-h: 38px;
     height: var(--input-h);
-    width: 165px;
-    order: 1;
+    width: 245px;
   }
+
   @include mq(desk) {
-    --input-h: 42px;
+    --input-h: 40px;
+    width: 400px;
     height: var(--input-h);
-    width: 187px;
   }
 
   &__input {
@@ -22,16 +25,18 @@
     height: 100%;
     padding-right: var(--input-h);
     padding-left: calc(var(--input-h) / 2);
+
     color: var(--dark);
     background-color: var(--light);
     border: transparent;
     border-radius: 100px;
 
     &::placeholder {
+      letter-spacing: 0.09em;
       color: inherit;
     }
     @include mq(tab) {
-      font-size: 14px;
+      font-size: 18px;
       text-align: center;
     }
   }

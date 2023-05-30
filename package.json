@@ -1,37 +1,36 @@
 {
-    "name": "filmoteka",
-    "version": "2.0.0",
-    "description": "",
-    "homepage": "https://goitacademy.github.io/filmoteka",
-    "scripts": {
-        "start": "parcel src/*.html",
-        "build": "parcel build src/*.html --public-url /filmoteka/"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/goitacademy/filmoteka.git"
-    },
-    "keywords": [],
-    "author": "Olexandr Morar <olexandr.morar@gmail.com>",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/ol-morar/filmoteka/issues"
-    },
-    "dependencies": {
-        "@glidejs/glide": "^3.6.0",
-        "axios": "^1.3.4",
-        "modern-normalize": "^1.1.0",
-        "tui-pagination": "^3.4.1"
-    },
-    "devDependencies": {
-        "@parcel/transformer-sass": "^2.6.0",
-        "buffer": "^6.0.3",
-        "os-browserify": "^0.3.0",
-        "parcel": "^2.6.0",
-        "parcel-reporter-clean-dist": "^1.0.4",
-        "path-browserify": "^1.0.1",
-        "posthtml-include": "^1.7.4",
-        "process": "^0.11.10"
-    },
-    "browserslist": "> 0.5%, last 2 versions, not dead"
+  "name": "filmoteka",
+  "version": "2.0.0",
+  "description": "",
+  "homepage": "https://goitacademy.github.io/filmoteka",
+  "scripts": {
+    "start": "parcel src/*.html --open",
+    "build": "parcel build src/*.html --public-url /filmoteka/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goitacademy/filmoteka.git"
+  },
+  "keywords": [],
+  "author": "Olexandr Morar <olexandr.morar@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ol-morar/filmoteka/issues"
+  },
+  "dependencies": {
+    "axios": "^1.3.4",
+    "modern-normalize": "^1.1.0",
+    "swiper": "^9.3.2",
+    "tui-pagination": "^3.4.1"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.6.0",
+    "buffer": "^6.0.3",
+    "os-browserify": "^0.3.0",
+    "parcel": "^2.6.0",
+    "parcel-reporter-clean-dist": "^1.0.4",
+    "path-browserify": "^1.0.1",
+    "posthtml-include": "^1.7.4"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead"
 }

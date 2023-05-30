@@ -15,7 +15,7 @@ import onWatchTrailerBtnClick from './scripts/eventHandlers/onWatchTrailerBtnCli
 
 // Pagination
 import './scripts/pagination';
-// import './scripts/slider';
+import './scripts/trending-slider';
 
 const refs = getRefs();
 
@@ -31,5 +31,5 @@ refs.libWatchedBtn.addEventListener('click', onLibWatchedBtnClick);
 refs.modalBackdrop.addEventListener('click', handleModal.backdropClick);
 refs.myLibBtn.addEventListener('click', onMyLibraryClick);
 refs.searchForm.addEventListener('submit', onSearchFormSubmit);
-refs.moviesRoot.addEventListener('click', onMovieItemClick);
+refs.popularRoot.addEventListener('click', onMovieItemClick);
 refs.watchTrailerBtn.addEventListener('click', onWatchTrailerBtnClick);

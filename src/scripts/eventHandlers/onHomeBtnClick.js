@@ -1,4 +1,5 @@
-import displayElemStyle from '../../helpers/displayElemStyle';
+import hideElement from '../../helpers/hideElement';
+import showElement from '../../helpers/showElement';
 import getRefs from '../getRefs';
 import { pagination } from '../pagination';
 import renderHomePage from '../renderHomePage';
@@ -6,18 +7,23 @@ import renderHomePage from '../renderHomePage';
 const refs = getRefs();
 
 const onHomeBtnClick = e => {
-    e.preventDefault();
+  e.preventDefault();
 
-    pagination.reset();
+  pagination.reset();
 
-    refs.libButtonsRoot.classList.remove('visible');
-    refs.myLibBtn.classList.remove('current');
-    refs.homeBtn.classList.add('current');
+  refs.libButtonsRoot.classList.remove('visible');
+  refs.myLibBtn.classList.remove('current');
+  refs.homeBtn.classList.add('current');
 
-    displayElemStyle('none', refs.libRoot);
-    displayElemStyle('grid', refs.trending);
+  hideElement(refs.libSection, refs.searchSection);
+  showElement(
+    refs.popularRoot,
+    refs.trendingSection,
+    refs.popularSection,
+    refs.paginationRoot
+  );
 
-    renderHomePage();
+  renderHomePage();
 };
 
 export default onHomeBtnClick;
