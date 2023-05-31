@@ -1,9 +1,4 @@
 .nav {
-  @include mq(mob-only) {
-    order: 1;
-    margin-bottom: 10px;
-  }
-
   &__list {
     text-transform: uppercase;
     color: var(--dark);

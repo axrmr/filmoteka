@@ -8,7 +8,6 @@ const details = '/movie/';
 const trending = '/trending/movie/week';
 const searchMovie = '/search/movie';
 const popular = '/movie/popular';
-const topRated = '/movie/top_rated';
 
 const params = {
   api_key: API_KEY,
@@ -59,14 +58,6 @@ class MoviesService {
         ...params,
         query: searchQuery,
       },
-    });
-
-    return response.data.results;
-  }
-
-  static async fetchTopRated() {
-    const response = await axios.get(topRated, {
-      params,
     });
 
     return response.data.results;

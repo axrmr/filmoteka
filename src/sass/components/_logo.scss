@@ -3,15 +3,23 @@
   align-items: center;
 
   @include mq(mob-only) {
-    order: 3;
-    margin-top: 95%;
+    margin-top: 75%;
   }
 
   &__icon {
-    display: inline-block;
-    width: 60px;
-    height: 36px;
+    width: 50px;
+    height: 50px;
     padding: 0;
+
+    @include mq(tab) {
+      width: 40px;
+      height: 40px;
+    }
+
+    @include mq(desk) {
+      width: 60px;
+      height: 60px;
+    }
   }
 
   &__title {
@@ -24,15 +32,12 @@
 
     @include mq(tab) {
       vertical-align: top;
-      font-size: 28px;
-      letter-spacing: 0.05em;
-
-      text-transform: uppercase;
+      font-size: 40px;
       line-height: calc(47px / 40px);
     }
 
     @include mq(desk) {
-      letter-spacing: 0.05em;
+      font-size: 64px;
       line-height: calc(75px / 64px);
     }
   }

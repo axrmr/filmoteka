@@ -1,5 +1,5 @@
 .search-form {
-  --input-h: 34px;
+  --input-h: 36px;
   height: var(--input-h);
   position: relative;
   width: 250px;
@@ -11,12 +11,12 @@
   @include mq(tab) {
     --input-h: 38px;
     height: var(--input-h);
-    width: 245px;
+    width: 175px;
   }
 
   @include mq(desk) {
     --input-h: 40px;
-    width: 400px;
+    width: 190px;
     height: var(--input-h);
   }
 
@@ -25,18 +25,17 @@
     height: 100%;
     padding-right: var(--input-h);
     padding-left: calc(var(--input-h) / 2);
-
     color: var(--dark);
     background-color: var(--light);
     border: transparent;
     border-radius: 100px;
 
     &::placeholder {
-      letter-spacing: 0.09em;
+      letter-spacing: 0.02em;
       color: inherit;
     }
     @include mq(tab) {
-      font-size: 18px;
+      font-size: 15px;
       text-align: center;
     }
   }
@@ -55,6 +54,7 @@
     @include mq(tab) {
       top: 11px;
     }
+
     @include mq(desk) {
       top: 13px;
       right: 18px;
@@ -85,8 +85,14 @@
     @include mq(mob-only) {
       margin-top: 8px;
     }
+
     @include mq(tab) {
       margin-top: 10px;
+      font-size: 18px;
+    }
+
+    @include mq(desk) {
+      font-size: 20px;
     }
   }
 }

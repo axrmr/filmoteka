@@ -15,6 +15,8 @@ import onWatchTrailerBtnClick from './scripts/eventHandlers/onWatchTrailerBtnCli
 
 // Pagination
 import './scripts/pagination';
+
+// Slider
 import './scripts/trending-slider';
 
 const refs = getRefs();
@@ -28,8 +30,11 @@ refs.homeBtn.addEventListener('click', onHomeClick);
 refs.logo.addEventListener('click', onHomeClick);
 refs.libQueueBtn.addEventListener('click', onMyLibraryClick);
 refs.libWatchedBtn.addEventListener('click', onLibWatchedBtnClick);
+refs.libSection.addEventListener('click', onMovieItemClick);
 refs.modalBackdrop.addEventListener('click', handleModal.backdropClick);
 refs.myLibBtn.addEventListener('click', onMyLibraryClick);
 refs.searchForm.addEventListener('submit', onSearchFormSubmit);
+refs.searchSection.addEventListener('click', onMovieItemClick);
 refs.popularRoot.addEventListener('click', onMovieItemClick);
+refs.trendingSwiperWrap.addEventListener('click', onMovieItemClick);
 refs.watchTrailerBtn.addEventListener('click', onWatchTrailerBtnClick);

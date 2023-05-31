@@ -1,6 +1,7 @@
 @mixin mq($dev) {
   $mob: 320px;
   $tab: 768px;
+  $laptop: 1024px;
   $desk: 1280px;
 
   @if ($dev == mob-only) {
@@ -15,6 +16,11 @@
   }
   @if ($dev == tab) {
     @media screen and (min-width: $tab) {
+      @content;
+    }
+  }
+  @if ($dev == laptop) {
+    @media screen and (min-width: $laptop) {
       @content;
     }
   }

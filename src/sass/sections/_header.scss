@@ -1,40 +1,55 @@
 .header {
-  background-color: rgb(101, 16, 16);
+  height: 440px;
+  padding: 20px 0;
+  background-color: rgb(0, 0, 0);
 
-  @include mq(mob-only) {
-    height: 440px;
-    padding-top: 20px;
+  @include mq(tab) {
+    height: 222px;
+  }
 
-    &__overlay {
-      max-width: 320px;
-      width: 100%;
-      margin: 0 auto;
-      background-position: center 20%;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-color: var(--accent);
-      border-bottom-left-radius: 5px;
-      border-bottom-right-radius: 5px;
-      background-image: url('../images/header/header-bg_mob.jpg');
+  @include mq(desk) {
+    height: 316px;
+  }
+
+  &__top {
+    display: flex;
+    gap: 10px;
+
+    @include mq(mob-only) {
+      flex-wrap: wrap;
     }
   }
 
-  @include mq(tab) {
-    display: flex;
-    align-items: center;
-    height: 70px;
-  }
+  &__overlay {
+    max-width: 320px;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    background-position: center 20%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--accent);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-image: url('../images/header/header-bg_mob.jpg');
 
-  .container {
-    display: flex;
-
-    @include mq(mob-only) {
-      flex-direction: column;
+    @include mq(tab) {
+      max-width: 1250px;
+      background-size: 111%;
+      background-image: url('../images/header/header-bg_tab.jpg');
     }
 
     @include mq(tab) {
-      align-items: center;
-      justify-content: space-between;
+      background-image: url('../images/header/header-bg_desk.jpg');
     }
+  }
+
+  .container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding-left: 30px;
   }
 }

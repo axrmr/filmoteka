@@ -6,9 +6,8 @@ import showElement from '../../helpers/showElement';
 import GET_CONSTANTS from '../GET_CONSTANTS';
 import getRefs from '../getRefs';
 import createPopularMarkup from '../markup/createPopularMarkup';
-import createTopRatedMarkup from '../markup/createTopRatedMarkup';
 import createTrendingMarkup from '../markup/createTrendingMarkup';
-import { swiper } from '../trending-slider';
+import trendingSlider from '../trending-slider';
 
 const {
   CURRENT_PAGE_MOVIES_STORAGE_KEY,
@@ -49,17 +48,11 @@ async function onDOMContentLoaded() {
 
   try {
     const trendingArr = await MoviesService.fetchTrending();
-    renderMovieMarkup(refs.sliderWrapper, createTrendingMarkup(trendingArr));
-    swiper.updateSlides();
-  } catch (error) {
-    console.log(error.message);
-  }
-
-  try {
-    const topRatedArr = await MoviesService.fetchTopRated();
-    console.log(topRatedArr);
-    renderMovieMarkup(refs.heroSlider, createTopRatedMarkup(topRatedArr));
-    swiper.updateSlides();
+    renderMovieMarkup(
+      refs.trendingSwiperWrap,
+      createTrendingMarkup(trendingArr)
+    );
+    trendingSlider.updateSlides();
   } catch (error) {
     console.log(error.message);
   }

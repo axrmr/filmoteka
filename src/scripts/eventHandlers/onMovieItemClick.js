@@ -17,7 +17,6 @@ const popcornLoader = new Loader({
 
 const onMovieItemClick = e => {
   if (!e.target.closest('[data-movies-item]')) return;
-
   const movieId = +e.target.closest('[data-movie-id]').dataset.movieId;
 
   popcornLoader.show();

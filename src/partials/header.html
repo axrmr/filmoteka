@@ -1,44 +1,52 @@
 <header class="header header__overlay">
   <div class="container">
-    <a class="logo" href="index.html" data-logo>
-      <img
-        class="logo__icon"
-        src="./images/logo/logo.svg"
-        alt="Film tape logo"
-      />
-      <span class="logo__title">Filmoteka</span></a
-    >
+    <div class="header__top">
+      <!-- Search form -->
+      <form class="search-form" data-form action="#">
+        <label class="search-form__label"
+          ><input
+            class="search-form__input"
+            type="text"
+            name="searchQuery"
+            placeholder="Search movie"
+          />
+        </label>
+        <button
+          class="search-form__btn"
+          type="submit"
+          aria-label="Search button"
+        >
+          <svg class="search-form__icon">
+            <use href="./images/sprite.svg#search"></use>
+          </svg>
+        </button>
+        <div class="search-form__search-error" data-error-wrap></div>
+      </form>
 
-    <!-- Search form -->
-    <form class="search-form" data-form action="#">
-      <label class="search-form__label"
-        ><input
-          class="search-form__input"
-          type="text"
-          name="searchQuery"
-          placeholder="Search movie"
+      <!-- Navigation -->
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <button class="nav__btn" data-home-btn>Home</button>
+          </li>
+          <li class="nav__item">
+            <button class="nav__btn" data-my-lib-btn>My Library</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="header__bottom">
+      <!-- Logo -->
+      <a class="logo" data-logo>
+        <img
+          class="logo__icon"
+          src="./images/logo/logo.svg"
+          alt="Film tape logo"
         />
-      </label>
-      <button class="search-form__btn" type="submit" aria-label="Search button">
-        <svg class="search-form__icon">
-          <use href="./images/sprite.svg#search"></use>
-        </svg>
-      </button>
-      <div class="search-form__search-error" data-error-wrap></div>
-    </form>
-
-    <!-- Navigation -->
-    <nav class="nav">
-      <ul class="nav__list">
-        <li class="nav__item">
-          <button class="nav__btn" data-home-btn>Home</button>
-        </li>
-        <li class="nav__item">
-          <button class="nav__btn" data-my-lib-btn>My Library</button>
-        </li>
-      </ul>
-    </nav>
-
+        <span class="logo__title">Filmoteka</span></a
+      >
+    </div>
     <!-- Library buttons -->
     <div class="library-btns" data-library-btns>
       <button class="library-btns__queue" data-lib-queue-btn>Queue</button>

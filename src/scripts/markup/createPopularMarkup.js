@@ -11,8 +11,8 @@ const createPopularMarkup = popular => {
              data-movie-id="${movie.id}"
           >
             <img class="popular__img"
-                src="https://image.tmdb.org/t/p/w780/${movie.poster_path}" 
-                alt="${movie.title || movie.name}" width="290" height="430"
+                src="https://image.tmdb.org/t/p/w342/${movie.poster_path}" 
+                alt="${movie.title || movie.name}" width="342" height="400"
             />
            
             <div class="movie-info">

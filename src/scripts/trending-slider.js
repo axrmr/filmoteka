@@ -12,12 +12,11 @@ import modal from './modal';
 const { QUEUE_STORAGE_KEY, WATCHED_STORAGE_KEY } = GET_CONSTANTS();
 const refs = getRefs();
 
-const swiper = new Swiper('.trending__slider', {
+const trendingSlider = new Swiper('.trending__slider', {
   modules: [Navigation, Autoplay],
   speed: 1100,
   loop: true,
   slidesPerView: 5,
-  spaceBetween: 40,
   autoplay: {
     delay: 4000,
   },
@@ -32,7 +31,7 @@ const swiper = new Swiper('.trending__slider', {
     },
     768: {
       slidesPerView: 3,
-      spaceBetween: 15,
+      spaceBetween: 20,
     },
     1024: {
       slidesPerView: 4,
@@ -45,7 +44,7 @@ const swiper = new Swiper('.trending__slider', {
   },
 });
 
-swiper.on('click', e => {
+trendingSlider.on('click', e => {
   const id = +e.clickedSlide.attributes['data-movie-id'].value;
   MoviesService.fetchDetails(id)
     .then(details => {
@@ -69,4 +68,4 @@ swiper.on('click', e => {
     })
     .catch(console.error);
 });
-export { swiper };
+export default trendingSlider;

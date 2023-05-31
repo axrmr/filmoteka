@@ -1,21 +1,22 @@
 .library-btns {
   display: none;
-  height: 34px;
-
-  // &.visible {
-  //   display: flex;
-  // }
-
-  @include mq(mob-only) {
-    margin-top: 10px;
-  }
+  height: 40px;
 
   @include mq(tab) {
+    position: absolute;
+    top: 0;
+    right: 0;
     height: 38px;
   }
 
   @include mq(desk) {
     height: 42px;
+  }
+
+  &.visible {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
   }
 
   &__queue,

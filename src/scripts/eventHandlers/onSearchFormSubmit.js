@@ -36,12 +36,12 @@ const onSearchFormSubmit = e => {
       hideElement(
         refs.popularSection,
         refs.trendingSection,
-        refs.libRoot,
         refs.paginationRoot,
         refs.libSection
       );
 
       showElement(refs.searchSection);
+
       hideMobileKeyboardOnReturn(input);
     })
     .catch(console.error);

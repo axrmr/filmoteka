@@ -1,6 +1,6 @@
 .movie-info {
   width: 280px;
-  padding-right: 2px;
+  padding: 0 2px 4px;
   color: var(--accent);
 
   @include mq(tab) {
@@ -25,7 +25,7 @@
 
     @include mq(desk) {
       width: 225px;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
     }
   }
 
@@ -39,9 +39,6 @@
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
-    }
-
-    @include mq(desk) {
     }
   }
 

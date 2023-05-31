@@ -7,10 +7,11 @@ const createTrendingMarkup = trending => {
           <div class="swiper-slide trending__item" 
                data-trending-item 
                data-movie-id="${movie.id}"
+            
                >
             <img class="trending__img"
-                 src="https://image.tmdb.org/t/p/w780/${movie.poster_path}" 
-                 alt="${movie.title || movie.name}" width="290" height="430"
+                 src="https://image.tmdb.org/t/p/w342/${movie.poster_path}" 
+                 alt="${movie.title || movie.name}" width="343" height="400"
             />
            
             <div class="movie-info trending-info">
