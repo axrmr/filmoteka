@@ -4,7 +4,7 @@
   }
 
   &__img {
-    max-height: 310px;
+    max-height: 400px;
     margin-bottom: 10px;
     border-radius: 5px;
   }
@@ -14,7 +14,7 @@
     height: 555px;
 
     @include mq(desk) {
-      height: 435px;
+      height: 465px;
     }
   }
 
