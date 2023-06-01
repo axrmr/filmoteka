@@ -1,6 +1,7 @@
 import getRefs from './scripts/getRefs';
 
 // EventHandlers
+import scrollSmoothIntoView from './helpers/scrollSmoothIntoView';
 import handleModal from './scripts/eventHandlers/handleModal';
 import onAddToQueueClick from './scripts/eventHandlers/onAddToQueueBtnClick';
 import onAddToWatchedBtnClick from './scripts/eventHandlers/onAddToWatchedBtnClick';
@@ -20,6 +21,8 @@ import './scripts/pagination';
 import './scripts/trending-slider';
 
 const refs = getRefs();
+
+scrollSmoothIntoView();
 
 document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
 refs.addToQueueBtn.addEventListener('click', onAddToQueueClick);

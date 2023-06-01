@@ -7,6 +7,7 @@ import renderHomePage from '../renderHomePage';
 const refs = getRefs();
 
 const onHomeBtnClick = e => {
+  e.preventDefault();
   pagination.reset();
 
   refs.libButtonsRoot.classList.remove('visible');
