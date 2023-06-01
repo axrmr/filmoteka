@@ -33,7 +33,7 @@ const createTrendingMarkup = trending => {
                 <span class="movie-info__rating trending-info__rating">${movie.vote_average
                   .toString()
                   .slice(0, 3)}
-                  g </span>
+                </span>
               </div>
             </div>
           </div>
