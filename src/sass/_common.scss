@@ -4,9 +4,10 @@ body {
   height: 100%;
   font-family: var(--ff-main);
   overflow-y: scroll;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  line-height: calc(14px / 12px);
+  font-weight: 700;
+  line-height: calc(14px / 13px);
   background-color: var(--main-bg);
 }
 

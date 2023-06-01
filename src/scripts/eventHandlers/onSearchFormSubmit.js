@@ -12,7 +12,7 @@ const refs = getRefs();
 const onSearchFormSubmit = e => {
   e.preventDefault();
   const form = e.currentTarget;
-  const input = form.searchQuery;
+  const input = document.querySelector('[name=search]');
   const trimmedSearchQuery = input.value.trim();
 
   if (!trimmedSearchQuery) {

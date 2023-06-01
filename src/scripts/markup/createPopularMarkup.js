@@ -20,17 +20,21 @@ const createPopularMarkup = popular => {
                 title='${movie.title || movie.name}'
                 >${movie.title || movie.name}
               </h3>
-              <span class="movie-info__genres" title='${genres}'>${genres}</span>
-              <span class="movie-info__year">| ${
-                movie.release_date
-                  ? (movie.release_date || movie.first_air_date).slice(0, 4)
-                  : ''
-              }
-              </span>
-              <span class="movie-info__rating">${movie.vote_average
-                .toString()
-                .slice(0, 3)}
-              </span>
+              <div class="movie-info__inner">
+                <div class="movie-info__genres-wrapp">
+                  <span class="movie-info__genres" title='${genres}'>${genres}</span>
+                  <span class="movie-info__year">| ${
+                    movie.release_date
+                      ? (movie.release_date || movie.first_air_date).slice(0, 4)
+                      : ''
+                  }
+                  </span>
+                </div>
+                  <span class="movie-info__rating">${movie.vote_average
+                    .toString()
+                    .slice(0, 3)}
+                  </span>
+              </div>
             </div>
         </div>
     `;
