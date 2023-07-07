@@ -27,6 +27,7 @@ pagination.on('beforeMove', async eventData => {
     const popularArr = await MoviesService.fetchPopular(eventData.page + 1);
     $localStorage.save(CURRENT_PAGE_MOVIES_STORAGE_KEY, popularArr);
     renderMovieMarkup(refs.popularRoot, createPopularMarkup(popularArr));
+    window.scrollTo(880, 880);
   } catch (error) {
     console.error(error);
   } finally {
