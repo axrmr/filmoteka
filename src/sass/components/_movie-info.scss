@@ -12,9 +12,8 @@
   &__title {
     width: 100%;
     margin-bottom: 5px;
-    text-overflow: ellipsis;
     font-weight: 700;
-
+    text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     text-transform: uppercase;
@@ -43,7 +42,7 @@
   &__genres {
     display: inline-block;
     vertical-align: bottom;
-    font-weight: 700;
+    font-weight: 500;
 
     @include mq(tab) {
       max-width: 140px;

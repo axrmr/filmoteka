@@ -1,4 +1,8 @@
 .popular {
+  &__title {
+    margin-bottom: 50px;
+  }
+
   &__item {
     cursor: pointer;
 

@@ -37,7 +37,7 @@
     }
 
     @include mq(desk) {
-      font-size: 64px;
+      font-size: 80px;
       line-height: calc(75px / 64px);
     }
   }

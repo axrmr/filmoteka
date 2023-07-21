@@ -6,4 +6,8 @@
     4px 3px 1px #cccccc, 3px 4px 1px #eeeeee, 5px 4px 1px #cccccc,
     4px 5px 1px #eeeeee, 6px 5px 1px #cccccc, 5px 6px 1px #eeeeee,
     7px 6px 1px #cccccc;
+
+  @include mq(laptop) {
+    font-size: 40px;
+  }
 }

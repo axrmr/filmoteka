@@ -1,4 +1,8 @@
 .trending {
+  &__title {
+    margin-bottom: 30px;
+  }
+
   .swiper-slide {
     cursor: pointer;
   }
